@@ -1,0 +1,20 @@
+{
+  "managed": {
+    ".agents/skills/.DS_Store": "7676b2329eb624b712b8a0391a8596b0857d9200f8d7d3fa5f97379f487c5cda",
+    ".agents/skills/capability-resolver/SKILL.md": "c8d97b86807fc9d09ba5e5cd13fb106a809c7a853155ce4fa8b1142e86765f46",
+    ".agents/skills/debug-and-verify/SKILL.md": "fa482c451dd94f058d8cc3dc77712cff9d3adde30e065787d3f77e2b5098f817",
+    ".agents/skills/feature-build/SKILL.md": "07f48154df41ef203c09ab97047bbcbfbfa07930cd9d9d6d329b158de9e734cf",
+    ".agents/skills/project-intake/SKILL.md": "f918971b342b0f72b8cd6906637c090dd38fc27ff07c67261dd36b74bc3287fe",
+    ".agents/skills/ship-check/SKILL.md": "b2befa9ef28277c348e46e325b81df644310e9c59ede332d0c65b2cae01b6915",
+    ".agents/skills/stack-research/SKILL.md": "62bd03ecc3eeaf143bea2c8e4afd4456fe708829a35a64328631b21cae8a316c",
+    ".ai-studio/AGENTS.md": "bd656e86eee39efbb39da00a9658b8069da97698aadd5cf305fad07f8877d83f",
+    ".ai-studio/PROJECT.template.md": "de15c81e4e36e04cee7fa16694a70c061f6735fdcef3f3bf776358c8ee540a36",
+    ".ai-studio/STATE.template.md": "537d3a33464d2767fb3d5679f02cb8cc54522109791fe09f195623c5349ce6ed",
+    ".ai-studio/TOOLS.md": "2a40826613f62f99bc75d705875c3047dbae69c02ab7b5dff9e86c5e544a75b1",
+    ".ai-studio/doctor.py": "557a01deacf090d6b3db2ef48d1f6704472c2dbfcf3799533e2fb7537bd93024",
+    ".ai-studio/registry.json": "9a6026b951c1bd51336b0174bdf65e0e0c08b3bc2e642a639d97f28fbfb15f04",
+    ".codex/agents/reviewer.toml": "2b4aec9731570d620378937eca23ed3e1d6b2e83809f33e476d861a6bab12213",
+    ".codex/agents/scout.toml": "211d0d5fbbdbc2170cac97a2847078661cc72a89634ab15b01dd3663d657dffa"
+  },
+  "schema": 1
+}
