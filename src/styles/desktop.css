@@ -132,7 +132,8 @@
   width: 20px;
   height: 20px;
 }
-.retro-window--phone .retro-window__heading img {
+.retro-window--phone .retro-window__heading img,
+.retro-window--capsule .retro-window__heading img {
   width: 18px;
   height: 18px;
   image-rendering: pixelated;
@@ -343,7 +344,27 @@
   top: 27px;
   left: -94px;
   background: url('/images/1996/viewer-reel.svg') center / contain no-repeat;
-  transform: rotate(-12deg);
+  transform: rotate(var(--reel-angle, -12deg));
+  transition: transform 300ms ease-out;
+}
+
+/* Age only the photographic surface, leaving captions and paper borders clear.
+   Grade the surface so the developing image can keep its own animated filter. */
+.memory-photo {
+  position: relative;
+  isolation: isolate;
+  filter: saturate(2.42) contrast(0.64) sepia(0.22)
+  blur(0.4px) brightness(1.1) hue-rotate(-2deg)
+}
+.memory-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: url('/images/1996/grain.svg');
+  filter: contrast(4);
+  opacity: 1;
+  pointer-events: none;
 }
 .activity--memory {
   text-align: center;
@@ -745,9 +766,9 @@
   .track-time { font-size: 10px; }
 }
 
-/* Panel 06: compact capsule collection, period-appropriate floppy and divider lines. */
-.desktop__window-stage--capsule { width: min(650px, 100%); }
-.activity--capsule { padding: 12px 17px 14px; }
+/* Capsule collection with room for desktop-style sprites and saved previews. */
+.desktop__window-stage--capsule { width: min(760px, 100%); }
+.activity--capsule { padding: 22px 24px 24px; }
 .capsule-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr);
@@ -762,18 +783,21 @@
 }
 .capsule-slot {
   display: flex; align-items: center; width: 100%;
-  gap: 11px; padding: 10px 0;
+  gap: 11px; padding: 14px 0; min-height: 88px;
   border: 0; border-bottom: 1px dashed #9d9da8;
   background: transparent; text-align: left; color: #111;
 }
 .capsule-slot:last-child { border-bottom: 0; }
-.capsule-slot__image { width: 51px; flex: 0 0 51px; }
-.capsule-slot__image svg { width: 40px; height: 40px; image-rendering: pixelated; }
+.capsule-slot__image { width: 56px; flex: 0 0 56px; }
+.capsule-slot__sprite { display: block; width: 48px; height: 48px; image-rendering: pixelated; }
 .capsule-thumbnail {
   display: block; width: 44px; height: 54px;
   border: 4px solid #fff; border-bottom-width: 10px;
-  object-fit: cover; box-shadow: 1px 2px 1px #888;
+  box-shadow: 1px 2px 1px #888;
   transform: rotate(-9deg);
+}
+.capsule-thumbnail img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
 }
 .capsule-slot__content {
   display: flex; flex-direction: column; gap: 2px;
@@ -781,9 +805,9 @@
   font-size: 13px; line-height: 1.22;
 }
 .capsule-slot__content strong { font-size: 16px; }
-.collection-check { color: #13812c; font-size: 21px; margin-left: 4px; vertical-align: middle; }
+.collection-check { width: 16px; height: 16px; margin-left: 4px; vertical-align: -2px; image-rendering: pixelated; }
 .collection-empty { color: #555; }
-.capsule-floppy { display: block; width: 100%; height: 215px; object-fit: contain; }
+.capsule-floppy { display: block; width: 100%; height: 260px; object-fit: contain; }
 .capsule-footer { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 10px; }
 .capsule-footer > span { font-size: 11px; color: #515151; margin-right: auto; }
 .capsule-footer button { min-width: 194px; min-height: 34px; padding: 6px 12px; font-weight: bold; font-size: 14px; }
@@ -856,7 +880,7 @@
   padding: 9px 9px 14px; background:#f7f1df; box-shadow:2px 3px 2px #7b6c5480;
   transform:rotate(-6deg); margin: 5px 2px 0 0;
 }
-.final-photo img { width:100%; aspect-ratio:1; object-fit:cover; display:block; filter:saturate(.9); }
+.final-photo img { width:100%; aspect-ratio:1; object-fit:cover; display:block; }
 .final-photo figcaption { text-align:center; font:italic 17px/1.2 'Comic Sans MS',cursive; color:#111; padding-top:7px; }
 .final-note { display:flex; gap:10px; align-items:center; border-bottom:2px dotted #9a8e7b; padding: 9px 0; font-size:13px; line-height:1.25; }
 .final-note:first-child { padding-top:1px; }
@@ -1504,48 +1528,10 @@
   }
 }
 
-/* Panel 09: optional CRT flourish after the personalised keepsake.
-   Drawn in CSS so the green completion copy stays crisp, editable and accessible. */
+/* Actions beneath the personalised keepsake. */
 .final-actions__buttons { display:flex; align-items:center; gap:8px; }
 .final-actions__buttons .retro-button { min-width:125px; font-size:13px; padding:7px 10px; }
-.crt-room {
-  position:relative; display:flex; justify-content:center; align-items:center;
-  overflow:hidden; min-height:455px; padding:24px 45px 25px;
-  background:radial-gradient(ellipse at 48% 32%,#52344b 0%,#2a1c32 53%,#130e1e 100%);
-}
-.crt-room__poster { position:absolute; left:18px; top:25px; transform:rotate(-8deg);
-  font:bold 43px/1 'Courier New',monospace; color:#db7195; opacity:.55; }
-.crt-room__lamp { position:absolute; left:7%; bottom:40px; width:50px; height:185px;
-  background:linear-gradient(90deg,#56243f,#ed629a 50%,#43172f); border-radius:42% 42% 35% 35%;
-  box-shadow:0 0 28px #e64b9c70; opacity:.85; }
-.crt-room__lamp::before { content:''; position:absolute; width:26px; height:45px; top:33px; left:12px;
-  background:#ffa0c5; border-radius:50%; filter:blur(6px); }
-.crt-room__lamp::after { content:''; position:absolute; bottom:-12px; left:-7px; width:64px; height:18px;
-  background:#211b24; border-radius:50%; }
-.crt-computer { position:relative; width:min(450px,100%); z-index:1; background:#a38b79;
-  border:11px solid #a9907d; border-radius:26px 26px 12px 12px;
-  box-shadow:inset 5px 4px #cbb5a1,inset -7px -5px #766353,14px 18px 0 #100e1b60;
-  transform:rotate(-1deg); }
-.crt-computer__bezel { background:#836c5d; padding:26px 22px 18px; border-radius:37px 37px 18px 18px;
-  box-shadow:inset 5px 5px 8px #443c37,inset -4px -5px 5px #dec4a4; }
-.crt-computer__screen { min-height:275px; display:flex; align-items:center; justify-content:center;
-  flex-direction:column; gap:14px; padding:24px 13px; background:#092b20;
-  border:10px solid #292d27; border-radius:35% / 12%;
-  box-shadow:inset 0 0 32px #030e0b,0 0 6px #80ed9999; color:#75ff99;
-  text-align:center; text-shadow:0 0 7px #67f58c; font:15px/1.32 'Courier New',monospace; }
-.crt-computer__screen svg { filter:brightness(0) saturate(100%) invert(90%) sepia(19%) saturate(1150%) hue-rotate(69deg); }
-.crt-computer__screen strong { font-size:19px; }
-.crt-computer__chin { height:39px; display:flex; justify-content:flex-end; align-items:center; padding:0 22px;
-  background:#ab9582; color:#6ed36d; border-top:2px solid #736253; }
-.crt-room__sticky { position:absolute; bottom:13px; right:15%; padding:1px 12px;
-  transform:rotate(-7deg); background:#ebc94e; color:#242028; font:30px Arial,sans-serif; z-index:2; }
 @media (max-width:600px) {
-  .crt-room { padding:15px 8px; min-height:380px; }
-  .crt-computer__bezel { padding:16px 11px 12px; }
-  .crt-computer__screen { min-height:240px; font-size:12px; }
-  .crt-computer__screen strong { font-size:16px; }
-  .crt-room__lamp { opacity:.25; }
-  .crt-room__sticky { right:8px; }
   .final-actions__buttons { flex-wrap:wrap; width:100%; }
   .final-actions__buttons button { flex:1; }
 }

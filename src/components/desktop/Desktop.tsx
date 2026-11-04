@@ -29,7 +29,7 @@ export default function Desktop({ active, completed, open, children }: Props) {
         />
         <DesktopIcon
           icon="phone"
-          title="Nokia"
+          title="Phone"
           selected={active === 'phone'}
           onClick={() => open('phone')}
         />

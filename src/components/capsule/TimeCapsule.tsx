@@ -1,7 +1,6 @@
 import { getMemory } from '../../data/memories';
 import { getTrack } from '../../data/tracks';
 import type { CapsuleState, WindowId } from '../../types/capsule';
-import PixelIcon, { type IconName } from '../ui/PixelIcon';
 
 type Props = {
   capsule: CapsuleState;
@@ -11,11 +10,11 @@ type Props = {
 };
 export default function TimeCapsule({ capsule, completed, open, onSeal }: Props) {
   const memory = getMemory(capsule.memoryId);
-  const slots: { icon: IconName; label: string; value: string | null; window: WindowId }[] = [
-    { icon: 'camera', label: 'Photo', value: memory?.title ?? null, window: 'memory' },
-    { icon: 'mail', label: 'Message', value: capsule.prediction, window: 'phone' },
+  const slots: { sprite: string; label: string; value: string | null; window: WindowId }[] = [
+    { sprite: 'desktop-camera.svg', label: 'Photo', value: memory?.title ?? null, window: 'memory' },
+    { sprite: 'desktop-phone.svg', label: 'Message', value: capsule.prediction, window: 'phone' },
     {
-      icon: 'music',
+      sprite: 'player-classic.svg',
       label: 'Soundtrack',
       value: getTrack(capsule.trackId)?.title ?? null,
       window: 'music',
@@ -35,17 +34,25 @@ export default function TimeCapsule({ capsule, completed, open, onSeal }: Props)
             >
               <span className="capsule-slot__image">
                 {slot.window === 'memory' && memory ? (
-                  <img className="capsule-thumbnail" src={memory.image} alt="" />
+                  <span className="capsule-thumbnail memory-photo">
+                    <img src={memory.image} alt="" />
+                  </span>
                 ) : (
-                  <PixelIcon name={slot.icon} size={46} />
+                  <img className="capsule-slot__sprite" src={`/images/1996/${slot.sprite}`} alt="" />
                 )}
               </span>
               <span className="capsule-slot__content">
                 <strong>
                   {slot.label}:{' '}
-                  <span className={slot.value ? 'collection-check' : 'collection-empty'}>
-                    {slot.value ? '✓' : '—'}
-                  </span>
+                  {slot.value ? (
+                    <img
+                      className="collection-check"
+                      src="/images/1996/collection-check.svg"
+                      alt="Collected"
+                    />
+                  ) : (
+                    <span className="collection-empty">—</span>
+                  )}
                 </strong>
                 <span>{slot.value ?? 'Not collected yet'}</span>
               </span>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import { getMemory, memories } from '../../data/memories';
 import type { MemoryId } from '../../types/capsule';
 import InstantPhoto from './InstantPhoto';
@@ -17,6 +17,7 @@ export default function ViewMaster({ selectedId, onChoose, notify, onClose }: Pr
       memories.findIndex((memory) => memory.id === selectedId),
     ),
   );
+  const [reelSteps, setReelSteps] = useState(0);
   const [phase, setPhase] = useState<'gallery' | 'developing' | 'developed'>(
     selectedId ? 'developed' : 'gallery',
   );
@@ -40,6 +41,7 @@ export default function ViewMaster({ selectedId, onChoose, notify, onClose }: Pr
   }
   function move(by: number) {
     setIndex((previous) => (previous + by + memories.length) % memories.length);
+    setReelSteps((previous) => previous + by);
   }
   const savedMemory = getMemory(selectedId);
 
@@ -49,6 +51,7 @@ export default function ViewMaster({ selectedId, onChoose, notify, onClose }: Pr
       icon="camera"
       kind="memory"
       onClose={onClose}
+      style={{ '--reel-angle': `${-12 + reelSteps * (360 / 14)}deg` } as CSSProperties}
     >
       <div className={`activity activity--memory activity--memory-${phase}`}>
         {phase === 'gallery' ? (
@@ -66,7 +69,7 @@ export default function ViewMaster({ selectedId, onChoose, notify, onClose }: Pr
                 ◀
               </button>
               <figure className="viewer-frame">
-                <div className="viewer-image">
+                <div className="viewer-image memory-photo">
                   <img src={memory.image} alt={memory.label} />
                 </div>
                 <figcaption>{memory.title}</figcaption>

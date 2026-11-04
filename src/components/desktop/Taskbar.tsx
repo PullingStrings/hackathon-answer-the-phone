@@ -1,5 +1,5 @@
-import PixelIcon from '../ui/PixelIcon';
 import type { WindowId } from '../../types/capsule';
+import PixelIcon from '../ui/PixelIcon';
 
 type Props = {
   active: WindowId | null;
@@ -10,7 +10,7 @@ type Props = {
 const names: Partial<Record<WindowId, string>> = {
   welcome: 'Welcome to 1996',
   memory: 'View-Master',
-  phone: 'Nokia',
+  phone: 'Phone',
   music: 'Music Player',
   capsule: 'My Time Capsule',
   sealing: 'Sealing...',
