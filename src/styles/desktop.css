@@ -888,115 +888,60 @@
   background: #000080;
 }
 
-/* 8–9. One personalised scrapbook result; a quiet CRT-style status below it. */
-.final-experience {
-  background: #1c2e53;
-  padding: 22px;
-}
+/* Panel 08: paper scrapbook keepsake as a single compact hand-made card. */
+.desktop__window-stage--final { width: min(850px, 100%); }
+.final-experience { background: #172448; padding: 12px; }
 .final-card {
+  position: relative;
+  overflow: hidden;
   background: #f2e3c1 url('/images/1996/scrapbook.png') center / 100% 100% no-repeat;
-  padding: 42px 40px 40px;
+  padding: 26px 38px 31px;
   color: #17223c;
-  min-height: 480px;
+  min-height: 385px;
+  border: 3px solid #d9c59c;
+  box-shadow: inset 0 0 0 3px #e6d5b6, 3px 3px 0 #101a35;
+  clip-path: polygon(0.4% 3%, 2% 1%, 10% 1.6%, 17% .6%, 29% 1.5%, 43% 0%, 53% 1%, 65% 0.4%, 79% 1.3%, 92% .3%, 98.8% 2%, 99.5% 16%, 99% 32%, 100% 53%, 99% 69%, 99.7% 85%, 98.5% 98%, 88% 99%, 73% 98.4%, 60% 100%, 48% 99%, 33% 100%, 22% 98.5%, 9% 99%, 1% 97%, 0% 86%, 1% 71%, .2% 56%, 1% 36%);
 }
-.final-card__header {
-  display: flex;
-  gap: 17px;
-  align-items: center;
-  margin: 0 0 26px 35px;
+.final-card::before {
+  content: '☆  ☆'; position: absolute; top: 21px; left: 11px;
+  color: #315eaa; font: bold 25px/1 'Courier New',monospace;
+  transform: rotate(-12deg); pointer-events: none;
 }
-.final-card__header h2 {
-  font:
-    900 35px/1.05 'Courier New',
-    monospace;
-  letter-spacing: -1px;
+.final-card::after {
+  content: ''; position: absolute; right: 5px; top: 1px;
+  width: 57px; height: 66px; transform: rotate(39deg) translate(10px,-12px);
+  background: linear-gradient(90deg,#e75f63 0 18%,#eebd48 18% 36%,#87be6d 36% 54%,#6db5c9 54% 72%,#7970b1 72% 90%,transparent 90%);
+  pointer-events: none;
 }
-.final-card__header p {
-  margin-top: 8px;
-  font-size: 15px;
-}
-.final-card__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr);
-  gap: 28px;
-  align-items: start;
-}
+.final-card__header { display:flex; gap: 13px; align-items:center; margin: 0 0 15px 53px; }
+.final-card__header h2 { font: 900 30px/1.1 'Courier New',monospace; letter-spacing: -.9px; }
+.final-card__header p { margin-top: 4px; font-size: 13px; }
+.final-card__grid { display:grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.75fr); gap: 19px; align-items: start; }
 .final-photo {
-  padding: 10px 10px 15px;
-  background: #f8f5e9;
-  box-shadow: 2px 3px 3px #7b6c5480;
-  transform: rotate(-7deg);
-  margin: 0 4px 0 0;
+  padding: 9px 9px 14px; background:#f7f1df; box-shadow:2px 3px 2px #7b6c5480;
+  transform:rotate(-6deg); margin: 5px 2px 0 0;
 }
-.final-photo img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.9);
+.final-photo img { width:100%; aspect-ratio:1; object-fit:cover; display:block; filter:saturate(.9); }
+.final-photo figcaption { text-align:center; font:italic 17px/1.2 'Comic Sans MS',cursive; color:#111; padding-top:7px; }
+.final-note { display:flex; gap:10px; align-items:center; border-bottom:2px dotted #9a8e7b; padding: 9px 0; font-size:13px; line-height:1.25; }
+.final-note:first-child { padding-top:1px; }
+.final-note p { overflow-wrap:anywhere; }
+.final-note b { margin-right:5px; }
+.final-note svg { width:30px; height:30px; }
+.final-highlight { background:#f9e98c; margin:10px 0 6px; padding:6px; text-align:center; font-size:13px; line-height:1.3; transform:rotate(-1deg); }
+.final-footnote { text-align:center; font:12px/1.4 'Courier New',monospace; }
+.final-actions { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:10px; }
+.crt-status { display:flex; align-items:center; gap:8px; color:#8fea98; text-shadow:0 0 6px #65ce6c80; font:12px 'Courier New',monospace; }
+.final-actions button { min-width:140px; }
+@media (max-width: 600px) {
+  .final-card { padding:17px 12px 20px; border:15px solid transparent; border-image:url('/images/1996/scrapbook.png') 150 fill stretch; clip-path:none; }
+  .final-card::before,.final-card::after { display:none; }
+  .final-card__header { margin:0 0 15px; gap:8px; }
+  .final-card__header h2 { font-size:22px; }
+  .final-card__grid { grid-template-columns:1fr; }
+  .final-photo { width: min(180px,80%); margin:0 auto 12px; }
+  .final-actions { flex-direction:column; }
 }
-.final-photo figcaption {
-  text-align: center;
-  font:
-    italic 20px/1.15 'Comic Sans MS',
-    cursive;
-  color: #111;
-  padding-top: 12px;
-}
-.final-note {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  border-bottom: 1px dashed #9a8e7b;
-  padding: 12px 0;
-  font-size: 15px;
-  line-height: 1.4;
-}
-.final-note:first-child {
-  padding-top: 0;
-}
-.final-note p {
-  overflow-wrap: anywhere;
-}
-.final-note b {
-  margin-right: 5px;
-}
-.final-highlight {
-  background: #f9e98c;
-  margin: 20px 0 10px;
-  padding: 7px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.3;
-  transform: rotate(-1deg);
-}
-.final-footnote {
-  text-align: center;
-  font:
-    13px/1.5 'Courier New',
-    monospace;
-}
-.final-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin-top: 18px;
-}
-.crt-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #8fea98;
-  text-shadow: 0 0 6px #65ce6c80;
-  font:
-    12px 'Courier New',
-    monospace;
-}
-.final-actions button {
-  min-width: 140px;
-}
-
 /* Keep the same objects and controls reachable on smaller displays. */
 @media (max-width: 1100px) {
   .desktop {
