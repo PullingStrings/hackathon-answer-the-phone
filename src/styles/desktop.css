@@ -1623,3 +1623,49 @@
     align-items: flex-start;
   }
 }
+
+/* Panel 09: optional CRT flourish after the personalised keepsake.
+   Drawn in CSS so the green completion copy stays crisp, editable and accessible. */
+.final-actions__buttons { display:flex; align-items:center; gap:8px; }
+.final-actions__buttons .retro-button { min-width:125px; font-size:13px; padding:7px 10px; }
+.crt-room {
+  position:relative; display:flex; justify-content:center; align-items:center;
+  overflow:hidden; min-height:455px; padding:24px 45px 25px;
+  background:radial-gradient(ellipse at 48% 32%,#52344b 0%,#2a1c32 53%,#130e1e 100%);
+}
+.crt-room__poster { position:absolute; left:18px; top:25px; transform:rotate(-8deg);
+  font:bold 43px/1 'Courier New',monospace; color:#db7195; opacity:.55; }
+.crt-room__lamp { position:absolute; left:7%; bottom:40px; width:50px; height:185px;
+  background:linear-gradient(90deg,#56243f,#ed629a 50%,#43172f); border-radius:42% 42% 35% 35%;
+  box-shadow:0 0 28px #e64b9c70; opacity:.85; }
+.crt-room__lamp::before { content:''; position:absolute; width:26px; height:45px; top:33px; left:12px;
+  background:#ffa0c5; border-radius:50%; filter:blur(6px); }
+.crt-room__lamp::after { content:''; position:absolute; bottom:-12px; left:-7px; width:64px; height:18px;
+  background:#211b24; border-radius:50%; }
+.crt-computer { position:relative; width:min(450px,100%); z-index:1; background:#a38b79;
+  border:11px solid #a9907d; border-radius:26px 26px 12px 12px;
+  box-shadow:inset 5px 4px #cbb5a1,inset -7px -5px #766353,14px 18px 0 #100e1b60;
+  transform:rotate(-1deg); }
+.crt-computer__bezel { background:#836c5d; padding:26px 22px 18px; border-radius:37px 37px 18px 18px;
+  box-shadow:inset 5px 5px 8px #443c37,inset -4px -5px 5px #dec4a4; }
+.crt-computer__screen { min-height:275px; display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:14px; padding:24px 13px; background:#092b20;
+  border:10px solid #292d27; border-radius:35% / 12%;
+  box-shadow:inset 0 0 32px #030e0b,0 0 6px #80ed9999; color:#75ff99;
+  text-align:center; text-shadow:0 0 7px #67f58c; font:15px/1.32 'Courier New',monospace; }
+.crt-computer__screen svg { filter:brightness(0) saturate(100%) invert(90%) sepia(19%) saturate(1150%) hue-rotate(69deg); }
+.crt-computer__screen strong { font-size:19px; }
+.crt-computer__chin { height:39px; display:flex; justify-content:flex-end; align-items:center; padding:0 22px;
+  background:#ab9582; color:#6ed36d; border-top:2px solid #736253; }
+.crt-room__sticky { position:absolute; bottom:13px; right:15%; padding:1px 12px;
+  transform:rotate(-7deg); background:#ebc94e; color:#242028; font:30px Arial,sans-serif; z-index:2; }
+@media (max-width:600px) {
+  .crt-room { padding:15px 8px; min-height:380px; }
+  .crt-computer__bezel { padding:16px 11px 12px; }
+  .crt-computer__screen { min-height:240px; font-size:12px; }
+  .crt-computer__screen strong { font-size:16px; }
+  .crt-room__lamp { opacity:.25; }
+  .crt-room__sticky { right:8px; }
+  .final-actions__buttons { flex-wrap:wrap; width:100%; }
+  .final-actions__buttons button { flex:1; }
+}
