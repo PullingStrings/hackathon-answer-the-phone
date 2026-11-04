@@ -88,8 +88,8 @@
   width: min(560px, 100%);
 }
 .desktop__window-stage--phone {
-  width: min(780px, 100%);
-  padding-left: 232px;
+  width: min(660px, 100%);
+  padding-left: 192px;
 }
 .desktop__window-stage--sealing {
   width: min(660px, 100%);
@@ -500,23 +500,39 @@
     width: 205px;
   }
 }
-/* 4. The physical phone sits beside the Windows message dialog. */
-.retro-window--phone .retro-window__body {
-  min-height: 410px;
-}
+/* Panel 04: deliberate low-resolution 1996 Nokia + Windows 95 message dialog.
+   Geometry follows docs/1996_time_capsule_reference_panels/04-nokia-prediction.png. */
+.retro-window--phone .retro-window__body { min-height: 375px; }
+.retro-window--phone .retro-window__titlebar { height: 27px; }
+.retro-window--phone .retro-window__heading { font-size: 14px; font-weight: normal; }
+.activity--phone { padding: 13px 18px 16px; }
 .phone-device {
   position: absolute;
-  width: 340px;
-  height: 510px;
-  left: -300px;
-  top: -28px;
+  z-index: 1;
+  width: 255px;
+  height: 407px;
+  left: -231px;
+  top: -19px;
 }
-.phone-device > img {
+.phone-device > img,
+.phone-device__pixel-art {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(3px 5px 2px #004c4c);
 }
+.phone-device > img {
+  filter: drop-shadow(2px 3px 0 #004c4c);
+}
+.phone-device__pixel-art {
+  display: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(2px 3px 0 #004c4c);
+}
+.phone-device--pixelated > img { opacity: 0; }
+.phone-device--pixelated .phone-device__pixel-art { display: block; }
 .phone-screen {
   position: absolute;
   left: 28.5%;
@@ -525,25 +541,24 @@
   height: 19%;
   background: transparent;
   border: 0;
-  border-radius: 3px;
+  border-radius: 0;
   color: #172e14;
-  padding: 6px;
+  padding: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  font:
-    15px/1.15 'Courier New',
-    monospace;
+  gap: 3px;
+  font: bold 12px/1.1 'Courier New', monospace;
+  text-align: center;
+  text-shadow: 1px 0 #79936f;
 }
 .phone-screen svg {
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
+  shape-rendering: crispEdges;
 }
-.phone-screen:disabled {
-  color: #172e14;
-}
+.phone-screen:disabled { color: #172e14; }
 .phone-navigation {
   position: absolute;
   top: 53.5%;
@@ -555,124 +570,129 @@
 .phone-navigation button {
   background: transparent;
   box-shadow: none;
-  padding: 2px 7px;
-  min-height: 28px;
-  width: 34px;
-  font-size: 11px;
+  padding: 2px 6px;
+  min-height: 24px;
+  width: 30px;
+  font-size: 10px;
 }
 .phone-form {
-  min-height: 370px;
+  min-height: 338px;
   display: flex;
   flex-direction: column;
 }
 .phone-prompt {
-  font-size: 20px;
-  line-height: 1.25;
-  font-weight: normal;
-  padding: 17px 22px;
-  margin-bottom: 19px;
+  position: relative;
+  width: 82%;
+  margin: 0 0 15px 2px;
+  padding: 11px 14px 13px;
   background: #aaa9b4;
-  border-radius: 14px 14px 14px 0;
-  box-shadow: inset 1px 1px #eee;
+  border: 1px solid #92929f;
+  border-top-color: #eeeeef;
+  border-left-color: #eeeeef;
+  border-radius: 11px 11px 11px 0;
+  font: bold 16px/1.25 'MS Sans Serif', Tahoma, Arial, sans-serif;
 }
-.phone-new,
+.phone-prompt::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  bottom: -9px;
+  border-top: 9px solid #aaa9b4;
+  border-right: 10px solid transparent;
+}
 .phone-sent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 17px;
+  gap: 14px;
   text-align: center;
+  padding: 12px 0;
 }
-.phone-new h3,
-.phone-sent h3 {
-  font-size: 18px;
-}
-.phone-new p,
-.phone-sent p {
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-}
-.phone-new .retro-button,
-.phone-sent .retro-button {
-  margin-top: 12px;
-  min-width: 170px;
-}
-.prediction-options {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+.phone-sent h3 { font-size: 16px; }
+.phone-sent p { line-height: 1.4; overflow-wrap: anywhere; }
+.phone-sent .retro-button { margin-top: 5px; }
+.prediction-options { display: flex; flex-direction: column; gap: 7px; }
 .prediction-option {
-  border: 0;
-  padding: 7px 8px;
+  width: 100%;
+  min-height: 32px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  text-align: left;
+  gap: 11px;
+  padding: 5px 7px;
+  border: 0;
+  border-radius: 0;
   background: transparent;
   color: #111;
-  font-size: 16px;
-  line-height: 1.35;
-  border-radius: 13px;
+  font: 14px/1.28 'MS Sans Serif', Tahoma, Arial, sans-serif;
+  text-align: left;
 }
-.prediction-option.is-picked {
-  background: #b9e49a;
-}
+.prediction-option.is-picked { background: #b3e69a; border-radius: 12px; }
 .prediction-radio {
+  position: relative;
   width: 15px;
   height: 15px;
-  border: 2px solid #555;
+  border: 2px solid #404040;
   border-radius: 50%;
   background: #fff;
-  flex-shrink: 0;
+  flex: 0 0 15px;
 }
 .is-picked .prediction-radio::after {
   content: '';
-  display: block;
+  position: absolute;
   width: 7px;
   height: 7px;
-  margin: 2px;
+  top: 2px;
+  left: 2px;
   background: #111;
   border-radius: 50%;
+}
+.prediction-option__custom-label {
+  display: block;
+  width: 100%;
+  padding: 3px 6px;
+  background: #fff;
+  border: 1px solid #919191;
+  box-shadow: inset 1px 1px #ddd;
+  border-radius: 2px;
 }
 .custom-prediction {
   display: flex;
   flex-direction: column;
-  margin: 11px 0 0;
   gap: 5px;
-  font-size: 13px;
+  margin: 6px 4px 0 32px;
+  font-size: 12px;
 }
 .custom-prediction textarea {
+  width: 100%;
+  min-height: 48px;
+  max-height: 95px;
+  padding: 5px;
+  resize: vertical;
   border: 0;
   border-radius: 0;
   box-shadow: var(--sunken);
   background: #fff;
-  padding: 7px;
-  resize: vertical;
-  min-height: 65px;
-  max-height: 150px;
-  width: 100%;
 }
-.custom-prediction small {
-  text-align: right;
-}
+.custom-prediction small { text-align: right; }
 .phone-form__actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 24px;
+  justify-content: center;
+  margin-top: 9px;
+  padding-top: 0;
 }
 .phone-form__actions button {
-  min-width: 110px;
+  min-width: 100px;
+  min-height: 34px;
+  padding: 5px 16px;
+  font-size: 16px;
+  font-weight: bold;
 }
 .sent-preview {
   width: 100%;
+  padding: 12px;
   background: #dedede;
   box-shadow: var(--sunken);
-  padding: 14px;
 }
-
 /* 5. The cassette is the focal object, with classic transport controls. */
 .activity--music {
   padding: 22px 32px 27px;
@@ -967,12 +987,12 @@
     padding-right: 30px;
   }
   .desktop__window-stage--phone {
-    padding-left: 205px;
+    padding-left: 165px;
   }
   .phone-device {
-    width: 300px;
-    height: 450px;
-    left: -267px;
+    width: 218px;
+    height: 350px;
+    left: -195px;
   }
   .final-card {
     padding: 35px 28px;
@@ -1002,30 +1022,30 @@
     border-radius: 45px;
   }
   .desktop__window-stage--phone {
-    padding-left: 155px;
+    padding-left: 135px;
   }
   .phone-device {
-    width: 230px;
-    left: -210px;
-    top: 10px;
-    height: 345px;
+    width: 182px;
+    left: -155px;
+    top: 12px;
+    height: 291px;
   }
   .phone-screen {
-    font-size: 12px;
+    font-size: 10px;
   }
   .activity--phone {
-    padding: 17px;
+    padding: 12px;
   }
   .phone-prompt {
-    font-size: 18px;
-    padding: 13px;
+    font-size: 14px;
+    padding: 9px;
   }
   .prediction-option {
-    font-size: 14px;
-    gap: 8px;
+    font-size: 13px;
+    gap: 7px;
   }
   .phone-form__actions button {
-    min-width: 80px;
+    min-width: 90px;
   }
   .cassette-stage {
     gap: 12px;
@@ -1190,16 +1210,19 @@
     position: relative;
     left: auto;
     top: auto;
-    width: 240px;
-    height: 360px;
+    width: 205px;
+    height: 327px;
     flex-shrink: 0;
   }
   .phone-screen {
-    font-size: 13px;
+    font-size: 11px;
   }
   .phone-form {
     width: 100%;
     min-height: 0;
+  }
+  .phone-prompt {
+    width: 90%;
   }
   .retro-window--phone .retro-window__body {
     min-height: 0;
