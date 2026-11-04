@@ -80,18 +80,6 @@ export default function ViewMaster({ selectedId, onChoose, notify, onClose }: Pr
                 ▶
               </button>
             </div>
-            <div className="memory-dots" aria-label="Choose a scene">
-              {memories.map((item, i) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  aria-label={`Show scene ${i + 1}: ${item.title}`}
-                  aria-pressed={index === i}
-                  onClick={() => setIndex(i)}
-                  className={index === i ? 'is-current' : ''}
-                />
-              ))}
-            </div>
             <button type="button" className="retro-button memory-choose" onClick={select}>
               This is my memory! <span aria-hidden="true">✔</span>
             </button>
