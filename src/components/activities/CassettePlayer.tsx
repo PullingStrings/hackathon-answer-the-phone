@@ -95,6 +95,9 @@ export default function CassettePlayer({ savedId, onChoose, notify }: Props) {
   }
   return (
     <div className="activity activity--music">
+      <div className="viewer-counter" aria-live="polite">
+        {index + 1} / {tracks.length}
+      </div>
       <div className="cassette-stage">
         <button
           type="button"

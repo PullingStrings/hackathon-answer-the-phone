@@ -6,7 +6,16 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/Nunito-Variable.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+}
+
 :root {
+  --paragraph-font: 'Nunito', Arial, sans-serif;
   --desktop: #008080;
   --window: #c0c0c0;
   --titlebar: #000080;

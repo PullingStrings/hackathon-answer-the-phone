@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 56" shape-rendering="crispEdges">
+  <!-- Integer pixel steps and flat palette match the desktop sprites. -->
+  <path fill="#17152f" d="M15 5h23V3h17v2h3v10h-3v9h2v6h2v7h3v12h-3v2H46v2H5v-2H2V39h2v-6h2v-6h3V10h3V7h3z"/>
+  <!-- Folded bellows and stepped side support. -->
+  <path fill="#37324f" d="M44 15h8v10h3v7h3v8H44z"/>
+  <path fill="#554b70" d="M46 19h6v2h-6zM46 25h9v2h-9zM46 31h12v2H46zM46 37h12v2H46z"/>
+  <path fill="#8f86ba" d="M51 15h3v7h2v7h2v7h-3v-6h-2v-7h-2z"/>
+  <path fill="#c2bbd9" d="M51 15h1v8h2v7h2v6h-1v-6h-2v-7h-2z"/>
+  <!-- Upper housing and the silver face. -->
+  <path fill="#554b70" d="M15 7h24V5h15v2h2v6h-3v2h-9v15H11V11h2V9h2z"/>
+  <path fill="#8f86ba" d="M15 7h25V5h12v2H40v2H15z"/>
+  <path fill="#c2bbd9" d="M13 11h29v18H11V13h2z"/>
+  <path fill="#fff1da" d="M13 11h29v2H13zM11 13h2v14h-2z"/>
+  <path fill="#8f86ba" d="M40 13h2v16H13v-2h27z"/>
+  <!-- Viewfinder, red shutter, and a stepped lens with glass highlights. -->
+  <path fill="#17152f" d="M34 14h6v9h-6zM13 22h5v5h-5zM23 13h5v2h3v3h2v5h-2v3h-3v2h-5v-2h-3v-3h-2v-5h2v-3h3z"/>
+  <path fill="#67618f" d="M35 15h4v7h-4zM23 15h5v2h3v6h-3v3h-5v-3h-3v-5h3z"/>
+  <path fill="#fff1da" d="M23 15h5v1h-5zM21 17h2v2h-2zM35 15h3v1h-3z"/>
+  <path fill="#17152f" d="M24 17h4v2h2v4h-3v1h-3v-2h-2v-3h2z"/>
+  <path fill="#254c82" d="M24 18h3v2h2v2h-5zM36 17h2v3h-2z"/>
+  <path fill="#9aefb8" d="M24 18h2v2h-2zM36 17h1v2h-1z"/>
+  <path fill="#8f86ba" d="M27 21h2v1h-2z"/>
+  <path fill="#d65c7e" d="M14 23h3v3h-3z"/>
+  <path fill="#ff9a9c" d="M14 23h2v1h-2z"/>
+  <!-- Sloping front with a stepped rainbow stripe. -->
+  <path fill="#554b70" d="M11 29h31v6h-2v6H5v-6h2v-4h4z"/>
+  <path fill="#67618f" d="M11 29h30v2H11zM7 33h2v4H7zM5 37h2v4H5z"/>
+  <path fill="#d65c7e" d="M23 29h2v4h-2v4h-2v5h-2v-5h2v-4h2z"/>
+  <path fill="#ffc85b" d="M25 29h2v4h-2v4h-2v5h-2v-5h2v-4h2z"/>
+  <path fill="#9aefb8" d="M27 29h2v4h-2v4h-2v5h-2v-5h2v-4h2z"/>
+  <path fill="#32b8ba" d="M29 29h2v4h-2v4h-2v5h-2v-5h2v-4h2z"/>
+  <!-- Print slot and shaded base. -->
+  <path fill="#37324f" d="M4 42h38v9H5v-2H4zM44 40h15v8h-3v1H44z"/>
+  <path fill="#67618f" d="M4 42h38v2H4zM44 40h15v2H44z"/>
+  <path fill="#17152f" d="M7 45h31v4H7zM42 40h2v11h-2z"/>
+  <path fill="#8f86ba" d="M8 49h30v1H8z"/>
+</svg>

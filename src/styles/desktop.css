@@ -45,13 +45,13 @@
 }
 .desktop-icon__art {
   position: relative;
-  height: 41px;
+  height: 49px;
   filter: drop-shadow(1px 2px 0 #004c4c);
 }
 .desktop-icon__art img {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   image-rendering: pixelated;
 }
 .desktop-icon__label {
@@ -311,7 +311,6 @@
   margin: 0 0 2px;
 }
 .welcome p {
-  font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 1.45;
   letter-spacing: 0;
@@ -491,6 +490,7 @@
   height: 148px;
   margin: 5px 0 0;
   object-fit: contain;
+  image-rendering: pixelated;
 }
 .activity--memory-developed .development-copy .retro-button {
   align-self: flex-start;
@@ -803,9 +803,12 @@
 }
 .sealing h2,
 .sealing p {
-  font:
-    19px/1.7 'Courier New',
-    monospace;
+  font-size: 19px;
+  line-height: 1.7;
+}
+.sealing h2 {
+  font-family: 'Courier New', monospace;
+  font-weight: normal;
 }
 .sealing__progress {
   display: flex; gap: 2px; height: 25px;
@@ -861,7 +864,7 @@
 .final-note b { margin-right:5px; }
 .final-note svg { width:30px; height:30px; }
 .final-highlight { background:#f9e98c; margin:10px 0 6px; padding:6px; text-align:center; font-size:13px; line-height:1.3; transform:rotate(-1deg); }
-.final-footnote { text-align:center; font:12px/1.4 'Courier New',monospace; }
+.final-footnote { text-align:center; font-size:12px; line-height:1.4; }
 .final-actions { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:10px; }
 .crt-status { display:flex; align-items:center; gap:8px; color:#8fea98; text-shadow:0 0 6px #65ce6c80; font:12px 'Courier New',monospace; }
 .final-actions button { min-width:140px; }
@@ -1003,11 +1006,11 @@
   }
   .desktop-icon__art svg,
   .desktop-icon__art img {
-    width: 33px;
-    height: 33px;
+    width: 40px;
+    height: 40px;
   }
   .desktop-icon__art {
-    height: 34px;
+    height: 41px;
   }
   .desktop__window-stage {
     padding: 0;
@@ -1278,12 +1281,12 @@
     gap: 2px;
   }
   .desktop--intro .desktop-icon__art {
-    height: 33px;
+    height: 45px;
   }
   .desktop--intro .desktop-icon__art svg,
   .desktop--intro .desktop-icon__art img {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
   }
   .desktop--intro .desktop-icon__label {
     font-size: 12px;

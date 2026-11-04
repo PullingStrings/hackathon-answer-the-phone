@@ -10,9 +10,9 @@ export default function WelcomeWindow({ onStart }: Props) {
       </h1>
       <p>Your time capsule is almost ready.</p>
       <p>
-        Find a photo, choose your soundtrack
+        Capture your memory,
         <br />
-        and leave a message for your future self.
+        predict the future, set your soundtrack.
       </p>
       <button type="button" className="retro-button welcome__action" onClick={onStart}>
         Let's Go!

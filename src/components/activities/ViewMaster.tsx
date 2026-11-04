@@ -99,8 +99,8 @@ export default function ViewMaster({ selectedId, onChoose, notify, onClose }: Pr
               )}
               <img
                 className="instant-camera"
-                src="/images/1996/instant-camera.png"
-                alt="A folding instant camera with a rainbow stripe"
+                src="/images/1996/instant-camera.svg"
+                alt="A pixel art folding instant camera with a rainbow stripe"
               />
               {phase === 'developed' && (
                 <button type="button" className="retro-button" onClick={() => setPhase('gallery')}>
