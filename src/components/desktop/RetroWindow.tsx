@@ -18,7 +18,11 @@ export default function RetroWindow({ title, icon, children, onClose, kind = '' 
     >
       <div className="retro-window__titlebar">
         <span className="retro-window__heading">
-          <PixelIcon name={icon} size={21} />
+          {kind === 'phone' ? (
+            <img src="/images/1996/nokia-title.svg" alt="" />
+          ) : (
+            <PixelIcon name={icon} size={21} />
+          )}
           <span>{title}</span>
         </span>
         {onClose && (

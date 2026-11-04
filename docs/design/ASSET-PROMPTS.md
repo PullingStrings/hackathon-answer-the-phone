@@ -24,7 +24,7 @@ Use case: historical-scene. Original richly detailed realistic illustrated 35mm 
 
 Transparent background: true.
 
-Use case: product-mockup. Create an isolated front-facing full-length 1990s Nokia 3310-inspired candybar mobile phone, original fictional brand PIXELTEL, dark navy blue textured plastic shell, silver gray curved keypad with realistic small number labels, worn edges and subtle highlights, narrow ear speaker, a clean EMPTY pale muted green monochrome LCD screen for HTML text overlay. Entire object upright perfectly straight, centered with small transparent margins, not angled, no ground plane or backdrop, real transparent background. Detailed realistic nostalgic product illustration with slight scanned 1990s grain, like a cutout from an old catalog. Device fills 90% height. No UI outside the object, no extra objects. The blank LCD screen should be rectangular occupying x 24%-76% and y 28%-50% of the full image.
+Use case: product-mockup. Create an isolated front-facing full-length 1990s Nokia 3310-inspired candybar mobile phone, original fictional brand NOKIA, dark navy blue textured plastic shell, silver gray curved keypad with realistic small number labels, worn edges and subtle highlights, narrow ear speaker, a clean EMPTY pale muted green monochrome LCD screen for HTML text overlay. Entire object upright perfectly straight, centered with small transparent margins, not angled, no ground plane or backdrop, real transparent background. Detailed realistic nostalgic product illustration with slight scanned 1990s grain, like a cutout from an old catalog. Device fills 90% height. No UI outside the object, no extra objects. The blank LCD screen should be rectangular occupying x 24%-76% and y 28%-50% of the full image.
 
 ## cassette.png
 

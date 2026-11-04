@@ -10,7 +10,7 @@ type Props = {
 const names: Partial<Record<WindowId, string>> = {
   welcome: 'Welcome to 1996',
   memory: 'View-Master',
-  phone: 'Future Phone',
+  phone: 'Nokia',
   music: 'Music Player',
   capsule: 'My Time Capsule',
   sealing: 'Sealing...',

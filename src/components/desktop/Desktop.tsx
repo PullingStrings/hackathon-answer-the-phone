@@ -11,7 +11,9 @@ type Props = {
 };
 export default function Desktop({ active, completed, open, children }: Props) {
   return (
-    <main className={`desktop ${active === 'welcome' || active === null ? 'desktop--intro' : ''}`}>
+    <main
+      className={`desktop ${active === 'welcome' || active === null ? 'desktop--intro' : ''} ${active === 'phone' ? 'desktop--phone' : ''}`}
+    >
       <nav className="desktop__icons" aria-label="Desktop applications">
         <DesktopIcon
           icon="computer"

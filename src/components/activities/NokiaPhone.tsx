@@ -2,9 +2,9 @@ import { useEffect, useState, type ChangeEvent } from 'react';
 import PixelIcon from '../ui/PixelIcon';
 
 const predictions = [
-  'Everyone will have flying cars.',
+  "We'll have flying cars.",
   'Robots will teach at school.',
-  'Everyone will carry the internet in their pocket.',
+  'The internet will be everywhere.',
 ];
 type Props = {
   saved: string | null;
@@ -12,13 +12,14 @@ type Props = {
   notify: (message: string) => void;
 };
 export default function NokiaPhone({ saved, onSend, notify }: Props) {
-  const [mode, setMode] = useState<'new' | 'compose' | 'sending' | 'sent'>(saved ? 'sent' : 'new');
+  const [mode, setMode] = useState<'compose' | 'sending' | 'sent'>(saved ? 'sent' : 'compose');
   const [choice, setChoice] = useState<number>(() =>
     saved ? (predictions.includes(saved) ? predictions.indexOf(saved) : 3) : 2,
   );
   const [custom, setCustom] = useState(saved && !predictions.includes(saved) ? saved : '');
   const selected = choice === 3 ? custom.trim() : predictions[choice];
   const valid = selected.length > 0 && selected.length <= 120;
+
   useEffect(() => {
     if (mode !== 'sending') return;
     const timer = window.setTimeout(
@@ -30,74 +31,49 @@ export default function NokiaPhone({ saved, onSend, notify }: Props) {
     );
     return () => window.clearTimeout(timer);
   }, [mode, notify]);
+
   function send() {
     if (!valid) return;
     onSend(selected);
     setMode('sending');
   }
-  function edit() {
-    setMode('compose');
-  }
-  function move(by: number) {
-    setChoice((current) => (current + by + 4) % 4);
-    setMode('compose');
-  }
-
   return (
     <div className="activity activity--phone">
       <div className="phone-device">
-        <img src="/images/1996/phone.png" alt="A dark blue 1990s mobile phone" />
-        <button
-          className="phone-screen"
-          type="button"
-          onClick={mode === 'new' ? edit : mode === 'sent' ? edit : send}
-          disabled={mode === 'sending' || (mode === 'compose' && !valid)}
-          aria-label="Phone select"
-        >
-          <PixelIcon name={mode === 'sent' ? 'check' : 'mail'} size={28} />
+        <img
+          src="/images/1996/phone.png"
+          alt="Dark blue, early mobile phone with physical keypad"
+        />
+        <div className="phone-screen" aria-live="polite">
+          {mode === 'sent' ? (
+            <PixelIcon name="check" size={26} />
+          ) : (
+            <svg viewBox="0 0 24 20" aria-hidden="true">
+              <rect
+                x="1.5"
+                y="2"
+                width="21"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path d="M2 3l10 8L22 3" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+          )}
           <span>
-            {mode === 'new' ? (
+            {mode === 'sending' ? (
+              'Sending...'
+            ) : mode === 'sent' ? (
+              'Message sent!'
+            ) : (
               <>
                 1 New
                 <br />
                 Message
               </>
-            ) : mode === 'sending' ? (
-              'Sending...'
-            ) : mode === 'sent' ? (
-              <>
-                Message
-                <br />
-                sent!
-              </>
-            ) : (
-              <>
-                Write to
-                <br />
-                2026
-              </>
             )}
           </span>
-        </button>
-        <div className="phone-navigation">
-          <button
-            type="button"
-            className="retro-button"
-            onClick={() => move(-1)}
-            aria-label="Previous prediction"
-            disabled={mode !== 'compose'}
-          >
-            ▲
-          </button>
-          <button
-            type="button"
-            className="retro-button"
-            onClick={() => move(1)}
-            aria-label="Next prediction"
-            disabled={mode !== 'compose'}
-          >
-            ▼
-          </button>
         </div>
       </div>
       <div className="phone-form">
@@ -106,26 +82,13 @@ export default function NokiaPhone({ saved, onSend, notify }: Props) {
           <br />
           in 2026?
         </h2>
-        {mode === 'new' ? (
-          <div className="phone-new">
-            <PixelIcon name="mail" size={54} />
-            <h3>You have a message!</h3>
-            <p>
-              From: Your future self
-              <br />
-              Received: 1996
-            </p>
-            <button type="button" className="retro-button" onClick={edit}>
-              Open message
-            </button>
-          </div>
-        ) : mode === 'sent' ? (
+        {mode === 'sent' ? (
           <div className="phone-sent">
-            <PixelIcon name="check" size={44} />
+            <PixelIcon name="check" size={38} />
             <h3>Message sent!</h3>
             <p className="sent-preview">“{saved}”</p>
             <p className="saved-ribbon">✓ Added to Time Capsule</p>
-            <button type="button" className="retro-button" onClick={edit}>
+            <button type="button" className="retro-button" onClick={() => setMode('compose')}>
               Edit my prediction
             </button>
           </div>
@@ -145,43 +108,37 @@ export default function NokiaPhone({ saved, onSend, notify }: Props) {
                   <span>{prediction}</span>
                 </button>
               ))}
-              <button
-                type="button"
-                className={`prediction-option ${choice === 3 ? 'is-picked' : ''}`}
-                aria-pressed={choice === 3}
-                onClick={() => setChoice(3)}
-                disabled={mode === 'sending'}
+              <div
+                className={`prediction-option prediction-option--custom ${choice === 3 ? 'is-picked' : ''}`}
               >
-                <span className="prediction-radio" aria-hidden="true" />
-                <span>Write my own...</span>
-              </button>
-            </div>
-            {choice === 3 && (
-              <div className="custom-prediction">
-                <label htmlFor="custom-prediction">Your message to 2026</label>
-                <textarea
+                <button
+                  type="button"
+                  className="prediction-option__custom-choice"
+                  aria-label="Write my own prediction"
+                  aria-pressed={choice === 3}
+                  onClick={() => setChoice(3)}
+                  disabled={mode === 'sending'}
+                >
+                  <span className="prediction-radio" aria-hidden="true" />
+                </button>
+                <input
                   id="custom-prediction"
+                  className="prediction-option__custom-input"
+                  type="text"
                   maxLength={120}
-                  rows={2}
                   value={custom}
                   disabled={mode === 'sending'}
-                  onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
-                    setCustom(event.target.value)
-                  }
-                  placeholder="Dear future me..."
+                  placeholder="Write my own..."
+                  aria-label="Write my own prediction"
+                  onFocus={() => setChoice(3)}
+                  onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                    setChoice(3);
+                    setCustom(event.target.value);
+                  }}
                 />
-                <small>{custom.length} / 120 characters</small>
               </div>
-            )}
+            </div>
             <div className="phone-form__actions">
-              <button
-                type="button"
-                className="retro-button"
-                disabled={mode === 'sending'}
-                onClick={() => setMode(saved ? 'sent' : 'new')}
-              >
-                Back
-              </button>
               <button
                 type="button"
                 className="retro-button"
