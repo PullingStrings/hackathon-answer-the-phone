@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ChangeEvent, type SyntheticEvent } from 'react';
+import { useEffect, useState, type ChangeEvent } from 'react';
 import PixelIcon from '../ui/PixelIcon';
 
 const predictions = [
@@ -17,26 +17,8 @@ export default function NokiaPhone({ saved, onSend, notify }: Props) {
     saved ? (predictions.includes(saved) ? predictions.indexOf(saved) : 3) : 2,
   );
   const [custom, setCustom] = useState(saved && !predictions.includes(saved) ? saved : '');
-  const [pixelReady, setPixelReady] = useState(false);
-  const phoneCanvas = useRef<HTMLCanvasElement>(null);
   const selected = choice === 3 ? custom.trim() : predictions[choice];
   const valid = selected.length > 0 && selected.length <= 120;
-
-  // Render the original local phone artwork at 45% resolution and upscale with
-  // nearest-neighbour sampling. This produces actual visible pixels rather than
-  // a smooth modern product shot with a CSS "retro" filter.
-  function pixelatePhone(event: SyntheticEvent<HTMLImageElement>) {
-    const canvas = phoneCanvas.current;
-    if (!canvas) return;
-    const context = canvas.getContext('2d');
-    if (!context) return;
-    const image = event.currentTarget;
-    canvas.width = 116;
-    canvas.height = 185;
-    context.imageSmoothingEnabled = true;
-    context.drawImage(image, 0, 0, canvas.width, canvas.height);
-    setPixelReady(true);
-  }
 
   useEffect(() => {
     if (mode !== 'sending') return;
@@ -55,43 +37,51 @@ export default function NokiaPhone({ saved, onSend, notify }: Props) {
     onSend(selected);
     setMode('sending');
   }
-  function move(by: number) {
-    if (mode !== 'compose') return;
-    setChoice((current) => (current + by + 4) % 4);
-  }
-
   return (
     <div className="activity activity--phone">
-      <div className={`phone-device ${pixelReady ? 'phone-device--pixelated' : ''}`}>
+      <div className="phone-device">
         <img
           src="/images/1996/phone.png"
           alt="Dark blue, early mobile phone with physical keypad"
-          onLoad={pixelatePhone}
         />
-        <canvas className="phone-device__pixel-art" ref={phoneCanvas} aria-hidden="true" />
-        <button
-          className="phone-screen"
-          type="button"
-          onClick={mode === 'sent' ? () => setMode('compose') : mode === 'compose' ? send : undefined}
-          disabled={mode === 'sending' || (mode === 'compose' && !valid)}
-          aria-label={mode === 'sent' ? 'Edit message' : 'Phone select'}
-        >
-          <PixelIcon name={mode === 'sent' ? 'check' : 'mail'} size={26} />
+        <div className="phone-screen" aria-live="polite">
+          {mode === 'sent' ? (
+            <PixelIcon name="check" size={26} />
+          ) : (
+            <svg viewBox="0 0 24 20" aria-hidden="true">
+              <rect
+                x="1.5"
+                y="2"
+                width="21"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path d="M2 3l10 8L22 3" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+          )}
           <span>
-            {mode === 'sending' ? 'Sending...' : mode === 'sent' ? 'Message sent!' : (
-              <>1 New<br />Message</>
+            {mode === 'sending' ? (
+              'Sending...'
+            ) : mode === 'sent' ? (
+              'Message sent!'
+            ) : (
+              <>
+                1 New
+                <br />
+                Message
+              </>
             )}
           </span>
-        </button>
-        <div className="phone-navigation">
-          <button type="button" className="retro-button" onClick={() => move(-1)}
-            aria-label="Previous prediction" disabled={mode !== 'compose'}>▲</button>
-          <button type="button" className="retro-button" onClick={() => move(1)}
-            aria-label="Next prediction" disabled={mode !== 'compose'}>▼</button>
         </div>
       </div>
       <div className="phone-form">
-        <h2 className="phone-prompt">What will life be like<br />in 2026?</h2>
+        <h2 className="phone-prompt">
+          What will life be like
+          <br />
+          in 2026?
+        </h2>
         {mode === 'sent' ? (
           <div className="phone-sent">
             <PixelIcon name="check" size={38} />
@@ -106,36 +96,55 @@ export default function NokiaPhone({ saved, onSend, notify }: Props) {
           <>
             <div className="prediction-options" role="group" aria-label="Choose your prediction">
               {predictions.map((prediction, index) => (
-                <button key={prediction} type="button"
+                <button
+                  key={prediction}
+                  type="button"
                   className={`prediction-option ${choice === index ? 'is-picked' : ''}`}
                   aria-pressed={choice === index}
                   onClick={() => setChoice(index)}
-                  disabled={mode === 'sending'}>
+                  disabled={mode === 'sending'}
+                >
                   <span className="prediction-radio" aria-hidden="true" />
                   <span>{prediction}</span>
                 </button>
               ))}
-              <button type="button"
-                className={`prediction-option ${choice === 3 ? 'is-picked' : ''}`}
-                aria-pressed={choice === 3} onClick={() => setChoice(3)}
-                disabled={mode === 'sending'}>
-                <span className="prediction-radio" aria-hidden="true" />
-                <span className="prediction-option__custom-label">Write my own...</span>
-              </button>
-            </div>
-            {choice === 3 && (
-              <div className="custom-prediction">
-                <label htmlFor="custom-prediction">Your message to 2026</label>
-                <textarea id="custom-prediction" maxLength={120} rows={2}
-                  value={custom} disabled={mode === 'sending'}
-                  onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setCustom(event.target.value)}
-                  placeholder="Dear future me..." />
-                <small>{custom.length} / 120 characters</small>
+              <div
+                className={`prediction-option prediction-option--custom ${choice === 3 ? 'is-picked' : ''}`}
+              >
+                <button
+                  type="button"
+                  className="prediction-option__custom-choice"
+                  aria-label="Write my own prediction"
+                  aria-pressed={choice === 3}
+                  onClick={() => setChoice(3)}
+                  disabled={mode === 'sending'}
+                >
+                  <span className="prediction-radio" aria-hidden="true" />
+                </button>
+                <input
+                  id="custom-prediction"
+                  className="prediction-option__custom-input"
+                  type="text"
+                  maxLength={120}
+                  value={custom}
+                  disabled={mode === 'sending'}
+                  placeholder="Write my own..."
+                  aria-label="Write my own prediction"
+                  onFocus={() => setChoice(3)}
+                  onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                    setChoice(3);
+                    setCustom(event.target.value);
+                  }}
+                />
               </div>
-            )}
+            </div>
             <div className="phone-form__actions">
-              <button type="button" className="retro-button"
-                disabled={!valid || mode === 'sending'} onClick={send}>
+              <button
+                type="button"
+                className="retro-button"
+                disabled={!valid || mode === 'sending'}
+                onClick={send}
+              >
                 {mode === 'sending' ? 'Sending...' : 'Send'}
               </button>
             </div>

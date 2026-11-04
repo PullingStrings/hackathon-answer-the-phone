@@ -88,7 +88,7 @@
   width: min(560px, 100%);
 }
 .desktop__window-stage--phone {
-  width: min(660px, 100%);
+  width: min(580px, 100%);
   padding-left: 192px;
 }
 .desktop__window-stage--sealing {
@@ -131,6 +131,11 @@
 .retro-window__heading svg {
   width: 20px;
   height: 20px;
+}
+.retro-window--phone .retro-window__heading img {
+  width: 18px;
+  height: 18px;
+  image-rendering: pixelated;
 }
 .retro-window--welcome .retro-window__heading {
   gap: 0;
@@ -447,7 +452,9 @@
 .instant-photo figcaption {
   margin: 0;
   padding-top: 10px;
-  font: italic 13px/1.3 'Comic Sans MS', cursive;
+  font:
+    italic 13px/1.3 'Comic Sans MS',
+    cursive;
 }
 .activity--memory-developing .instant-photo figcaption {
   visibility: hidden;
@@ -500,56 +507,54 @@
     width: 205px;
   }
 }
-/* Panel 04: deliberate low-resolution 1996 Nokia + Windows 95 message dialog.
-   Geometry follows docs/1996_time_capsule_reference_panels/04-nokia-prediction.png. */
-.retro-window--phone .retro-window__body { min-height: 375px; }
-.retro-window--phone .retro-window__titlebar { height: 27px; }
-.retro-window--phone .retro-window__heading { font-size: 14px; font-weight: normal; }
-.activity--phone { padding: 13px 18px 16px; }
+/* Panel 04 follows docs/1996_time_capsule_reference_panels/04-nokia-prediction.png. */
+.retro-window--phone .retro-window__body {
+  min-height: 300px;
+  background-image: url('/images/1996/grain.svg');
+}
+.retro-window--phone .retro-window__titlebar {
+  height: 27px;
+}
+.retro-window--phone .retro-window__heading {
+  font-size: 14px;
+  font-weight: normal;
+}
+.activity--phone {
+  padding: 11px 12px 12px;
+}
 .phone-device {
   position: absolute;
   z-index: 1;
   width: 255px;
   height: 407px;
-  left: -231px;
-  top: -19px;
+  left: -207px;
+  top: -2px;
 }
-.phone-device > img,
-.phone-device__pixel-art {
+.phone-device > img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-.phone-device > img {
   filter: drop-shadow(2px 3px 0 #004c4c);
 }
-.phone-device__pixel-art {
-  display: none;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  filter: drop-shadow(2px 3px 0 #004c4c);
-}
-.phone-device--pixelated > img { opacity: 0; }
-.phone-device--pixelated .phone-device__pixel-art { display: block; }
 .phone-screen {
   position: absolute;
   left: 28.5%;
-  top: 26.5%;
+  top: 23.5%;
   width: 42.5%;
-  height: 19%;
+  height: 22%;
   background: transparent;
-  border: 0;
-  border-radius: 0;
   color: #172e14;
-  padding: 3px;
+  padding: 8px 3px 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 3px;
-  font: bold 12px/1.1 'Courier New', monospace;
+  justify-content: flex-start;
+  gap: 4px;
+  font:
+    bold 12px/1.1 'Courier New',
+    monospace;
   text-align: center;
   text-shadow: 1px 0 #79936f;
 }
@@ -558,39 +563,26 @@
   height: 22px;
   shape-rendering: crispEdges;
 }
-.phone-screen:disabled { color: #172e14; }
-.phone-navigation {
-  position: absolute;
-  top: 53.5%;
-  left: 27%;
-  width: 46%;
-  display: flex;
-  justify-content: space-between;
-}
-.phone-navigation button {
-  background: transparent;
-  box-shadow: none;
-  padding: 2px 6px;
-  min-height: 24px;
-  width: 30px;
-  font-size: 10px;
-}
 .phone-form {
-  min-height: 338px;
+  min-height: 270px;
   display: flex;
   flex-direction: column;
 }
 .phone-prompt {
   position: relative;
-  width: 82%;
-  margin: 0 0 15px 2px;
-  padding: 11px 14px 13px;
+  width: 201px;
+  margin: 0 0 10px 6px;
+  padding: 7px 14px;
   background: #aaa9b4;
   border: 1px solid #92929f;
   border-top-color: #eeeeef;
   border-left-color: #eeeeef;
-  border-radius: 11px 11px 11px 0;
-  font: bold 16px/1.25 'MS Sans Serif', Tahoma, Arial, sans-serif;
+  border-radius: 8px 8px 8px 0;
+  font:
+    bold 14px/1.12 'MS Sans Serif',
+    Tahoma,
+    Arial,
+    sans-serif;
 }
 .phone-prompt::after {
   content: '';
@@ -608,83 +600,108 @@
   text-align: center;
   padding: 12px 0;
 }
-.phone-sent h3 { font-size: 16px; }
-.phone-sent p { line-height: 1.4; overflow-wrap: anywhere; }
-.phone-sent .retro-button { margin-top: 5px; }
-.prediction-options { display: flex; flex-direction: column; gap: 7px; }
+.phone-sent h3 {
+  font-size: 16px;
+}
+.phone-sent p {
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.phone-sent .retro-button {
+  margin-top: 5px;
+}
+.prediction-options {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .prediction-option {
   width: 100%;
-  min-height: 32px;
+  min-height: 26px;
   display: flex;
   align-items: center;
-  gap: 11px;
-  padding: 5px 7px;
+  gap: 9px;
+  padding: 3px 7px;
   border: 0;
   border-radius: 0;
   background: transparent;
   color: #111;
-  font: 14px/1.28 'MS Sans Serif', Tahoma, Arial, sans-serif;
+  font:
+    13px/1.2 'MS Sans Serif',
+    Tahoma,
+    Arial,
+    sans-serif;
   text-align: left;
 }
-.prediction-option.is-picked { background: #b3e69a; border-radius: 12px; }
+.prediction-option.is-picked {
+  background: #bcebaa;
+  border-radius: 9px;
+}
 .prediction-radio {
   position: relative;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #404040;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #404040;
   border-radius: 50%;
   background: #fff;
-  flex: 0 0 15px;
+  flex: 0 0 13px;
 }
 .is-picked .prediction-radio::after {
   content: '';
   position: absolute;
-  width: 7px;
-  height: 7px;
-  top: 2px;
-  left: 2px;
+  width: 6px;
+  height: 6px;
+  top: 3px;
+  left: 3px;
   background: #111;
   border-radius: 50%;
 }
-.prediction-option__custom-label {
-  display: block;
-  width: 100%;
-  padding: 3px 6px;
-  background: #fff;
-  border: 1px solid #919191;
-  box-shadow: inset 1px 1px #ddd;
-  border-radius: 2px;
-}
-.custom-prediction {
+.prediction-option__custom-choice {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin: 6px 4px 0 32px;
-  font-size: 12px;
-}
-.custom-prediction textarea {
-  width: 100%;
-  min-height: 48px;
-  max-height: 95px;
-  padding: 5px;
-  resize: vertical;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  flex: 0 0 13px;
   border: 0;
-  border-radius: 0;
-  box-shadow: var(--sunken);
-  background: #fff;
+  background: transparent;
 }
-.custom-prediction small { text-align: right; }
+.prediction-option__custom-input {
+  width: 100%;
+  min-width: 0;
+  height: 24px;
+  padding: 2px 5px;
+  border: 1px solid #919191;
+  border-radius: 2px;
+  box-shadow: inset 1px 1px #ddd;
+  background: #fff;
+  color: #111;
+  font:
+    13px 'MS Sans Serif',
+    Tahoma,
+    Arial,
+    sans-serif;
+}
+.prediction-option--custom {
+  gap: 12px;
+  padding-right: 2px;
+}
+.prediction-option__custom-input::placeholder {
+  color: #111;
+  opacity: 1;
+}
 .phone-form__actions {
   display: flex;
   justify-content: center;
-  margin-top: 9px;
+  margin-top: 16px;
   padding-top: 0;
 }
 .phone-form__actions button {
   min-width: 100px;
-  min-height: 34px;
-  padding: 5px 16px;
-  font-size: 16px;
+  min-height: 31px;
+  padding: 4px 14px;
+  font-size: 14px;
   font-weight: bold;
 }
 .sent-preview {
@@ -1451,5 +1468,158 @@
   .desktop__icons {
     gap: 7px;
     top: 14px;
+  }
+}
+
+/* One scalable Nokia composition; cqw values follow the 506px reference frame. */
+@media (min-width: 480px) {
+  .desktop--phone {
+    height: 100dvh;
+    min-height: 0;
+    padding: 0 0 40px;
+    overflow: hidden;
+  }
+  .desktop--phone .desktop__window-stage--phone {
+    position: relative;
+    flex: none;
+    width: min(760px, 100vw, 100dvh);
+    aspect-ratio: 506 / 396;
+    padding: 0;
+    container-type: inline-size;
+  }
+  .desktop--phone .retro-window--phone {
+    position: absolute;
+    top: 6.13cqw;
+    left: 36.56cqw;
+    width: 59.29cqw;
+    height: 54.74cqw;
+    padding: 0.59cqw;
+    display: flex;
+    flex-direction: column;
+  }
+  .desktop--phone .retro-window--phone .retro-window__titlebar {
+    height: 4.35cqw;
+    flex: none;
+    padding: 0.59cqw 0.59cqw 0.59cqw 0.99cqw;
+  }
+  .desktop--phone .retro-window--phone .retro-window__heading {
+    gap: 1.19cqw;
+    font-size: 2.77cqw;
+  }
+  .desktop--phone .retro-window--phone .retro-window__heading img {
+    width: 3.56cqw;
+    height: 3.56cqw;
+  }
+  .desktop--phone .retro-window--phone .retro-window__close {
+    width: 3.75cqw;
+    height: 3.56cqw;
+    font-size: 3.95cqw;
+    line-height: 3.36cqw;
+  }
+  .desktop--phone .retro-window--phone .retro-window__body {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+  .desktop--phone .activity--phone {
+    display: block;
+    height: 100%;
+    padding: 2.57cqw 1.98cqw 1.58cqw;
+  }
+  .desktop--phone .phone-device {
+    position: absolute;
+    top: 0.2cqw;
+    left: -38.34cqw;
+    width: 47.43cqw;
+    height: 71.15cqw;
+  }
+  .desktop--phone .phone-screen {
+    top: 25%;
+    gap: 1.98cqw;
+    padding: 1.58cqw 0.59cqw 0.59cqw;
+    font-size: 2.77cqw;
+    background: rgba(139, 225, 111, 0.5);
+  }
+  .desktop--phone .phone-screen svg {
+    width: 4.74cqw;
+    height: 4.74cqw;
+  }
+  .desktop--phone .phone-form {
+    width: auto;
+    min-height: 0;
+  }
+  .desktop--phone .phone-prompt {
+    width: 39.72cqw;
+    margin: 0 0 1.98cqw 1.19cqw;
+    padding: 1.58cqw 2.77cqw;
+    border-radius: 1.58cqw 1.58cqw 1.58cqw 0;
+    font-size: 2.77cqw;
+  }
+  .desktop--phone .phone-prompt::after {
+    bottom: -1.78cqw;
+    border-top-width: 1.78cqw;
+    border-right-width: 1.98cqw;
+  }
+  .desktop--phone .prediction-options {
+    width: 51.38cqw;
+    gap: 0.79cqw;
+    margin-left: 1.38cqw;
+  }
+  .desktop--phone .prediction-option {
+    min-height: 5.14cqw;
+    gap: 2.77cqw;
+    padding: 0.59cqw 1.38cqw;
+    font-size: 2.57cqw;
+  }
+  .desktop--phone .prediction-radio,
+  .desktop--phone .prediction-option__custom-choice {
+    width: 2.57cqw;
+    height: 2.57cqw;
+    flex-basis: 2.57cqw;
+  }
+  .desktop--phone .prediction-radio::after {
+    width: 1.19cqw;
+    height: 1.19cqw;
+    top: 0.59cqw;
+    left: 0.59cqw;
+  }
+  .desktop--phone .prediction-option--custom {
+    gap: 2.37cqw;
+    padding-right: 0.4cqw;
+  }
+  .desktop--phone .prediction-option__custom-input {
+    height: 4.74cqw;
+    padding: 0.4cqw 0.99cqw;
+    font-size: 2.57cqw;
+  }
+  .desktop--phone .phone-form__actions {
+    margin-top: 2.77cqw;
+    padding: 0 0 0 2.37cqw;
+  }
+  .desktop--phone .phone-form__actions button {
+    min-width: 19.76cqw;
+    min-height: 6.13cqw;
+    padding: 0.79cqw 2.77cqw;
+    font-size: 2.77cqw;
+  }
+}
+@media (min-width: 480px) and (max-width: 720px) {
+  .desktop--phone {
+    padding: 0;
+  }
+  .desktop--phone .desktop__icons,
+  .desktop--phone .taskbar {
+    display: none;
+  }
+}
+@media (min-width: 480px) and (max-width: 600px) {
+  .desktop--phone .desktop__window-stage--phone {
+    width: 100vw;
+  }
+}
+@media (min-width: 480px) and (max-width: 600px) and (max-height: 420px) {
+  .desktop--phone {
+    align-items: flex-start;
   }
 }

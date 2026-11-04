@@ -9,7 +9,7 @@ Primary reference: [approved nine-panel storyboard](1996-visual-reference.png). 
 | 1 — Desktop | Flat teal desktop; five small icons in a left column; centred grey welcome window; navy title bar, bevelled controls and bottom taskbar. | Native SVG icons and CSS. |
 | 2 — View-Master | Paper slide reel behind a rounded viewing aperture; photographic scene; previous/next controls; paper caption and selection button. | Original SVG reel, generated scene PNGs, CSS aperture. |
 | 3 — Instant camera | Tilted white instant print, developing exposure, segmented progress and a physical rainbow-stripe camera. Window title changes to Instant Camera. | Generated scene and transparent camera PNG; CSS paper, development and progress. |
-| 4 — Phone | Detailed dark blue phone beside the grey message dialog; live green-screen text; classic prediction choices and Send button. | Transparent generated phone; live HTML screen and form. Original fictional PIXELTEL branding. |
+| 4 — Phone | Detailed dark blue phone beside the grey message dialog; live green-screen text; classic prediction choices and Send button. | Transparent generated phone; live HTML screen and form. Original fictional NOKIA branding. |
 | 5 — Music | Detailed cassette, side arrows, track title and classic transport controls. | Transparent generated cassette; real existing audio state, controls remain disabled without recordings. |
 | 6 — Capsule | Compact three-row summary with actual selected photo, message and track, green completion marks and a labelled purple floppy. | Generated floppy, live photo thumbnail, native SVG and CSS. |
 | 7 — Sealing | Small grey progress dialog with hourglass and segmented navy bar. | Native SVG hourglass; existing progress timing and completion callback. |
