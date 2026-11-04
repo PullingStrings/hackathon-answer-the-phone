@@ -89,7 +89,7 @@ export default function App() {
         />
       )}
       {active === 'phone' && (
-        <RetroWindow title="Future Phone" icon="phone" kind="phone" onClose={close}>
+        <RetroWindow title="Nokia" icon="phone" kind="phone" onClose={close}>
           <NokiaPhone saved={capsule.prediction} onSend={choosePrediction} notify={notify} />
         </RetroWindow>
       )}
