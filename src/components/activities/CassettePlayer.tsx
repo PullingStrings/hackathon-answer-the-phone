@@ -15,7 +15,7 @@ export default function CassettePlayer({ savedId, onChoose, notify }: Props) {
     ),
   );
   const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
+  const [muted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
