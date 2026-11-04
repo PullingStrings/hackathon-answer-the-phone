@@ -100,7 +100,7 @@ export default function App() {
       )}
       {active === 'capsule' && (
         <RetroWindow
-          title="My Time Capsule - Collection"
+          title="My Time Capsule"
           icon="disk"
           kind="capsule"
           onClose={close}

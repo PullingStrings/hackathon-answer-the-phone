@@ -710,161 +710,103 @@
   background: #dedede;
   box-shadow: var(--sunken);
 }
-/* 5. The cassette is the focal object, with classic transport controls. */
-.activity--music {
-  padding: 22px 32px 27px;
-  text-align: center;
+/* Panel 05: compact Win95 music player with the cassette as the hero. */
+.desktop__window-stage--music { width: min(620px, 100%); }
+.retro-window--music .retro-window__body {
+  background: #bcbcbc url('/images/1996/grain.svg');
 }
+.activity--music { padding: 12px 19px 16px; text-align: center; }
 .cassette-stage {
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) 44px;
-  gap: 22px;
+  grid-template-columns: 36px minmax(0, 1fr) 36px;
   align-items: center;
+  gap: 13px;
 }
-.cassette-image {
-  width: 100%;
-  height: 290px;
-  object-fit: contain;
-}
-.track-title {
-  font-size: 21px;
-  margin-top: 4px;
-}
-.track-description {
-  font-size: 15px;
-  margin: 6px 0 19px;
-}
+.cassette-stage .arrow-button { width: 33px; min-width: 33px; height: 33px; min-height: 33px; padding: 3px; }
+.cassette-image { display: block; width: 100%; height: 235px; object-fit: contain; image-rendering: auto; }
+.track-title { margin-top: 0; font-size: 17px; line-height: 1.25; font-weight: bold; }
+.track-description { font-size: 13px; line-height: 1.3; margin: 3px 0 8px; }
 .track-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 8px;
+  display: flex; align-items: center; gap: 8px; width: min(430px,100%);
+  margin: 0 auto; padding: 5px; background: #c6c6c6;
   box-shadow: var(--sunken);
 }
-.track-controls button {
-  min-width: 44px;
-  min-height: 31px;
-  padding: 5px 9px;
-  font-size: 14px;
-}
-.track-progress {
-  flex: 1;
-  height: 12px;
-  padding: 3px;
-  background: #e5e5e5;
-  box-shadow: var(--sunken);
-}
-.track-progress span {
-  display: block;
-  height: 100%;
-  background: #000080;
-}
-.audio-unavailable {
-  font-size: 12px;
-  color: #454545;
-  margin: 12px 0 18px;
-}
-.track-add {
-  min-width: 240px;
-}
-.activity--music .hint {
-  margin-top: 10px;
+.track-controls button { min-width: 33px; min-height: 29px; padding: 3px 6px; font-size: 14px; }
+.track-progress { flex: 1; height: 13px; min-width: 0; padding: 2px; background: #eee; box-shadow: var(--sunken); }
+.track-progress span { display: block; height: 100%; background: #000080; }
+.track-time { white-space: nowrap; font: 12px/1.2 'MS Sans Serif',Tahoma,Arial,sans-serif; }
+.audio-unavailable { font-size: 11px; color: #454545; margin: 6px 0 4px; }
+.track-add { min-width: 185px; min-height: 29px; padding: 5px 14px; margin-top: 7px; font-size: 13px; }
+.activity--music .hint { margin-top: 7px; }
+@media (max-width: 600px) {
+  .cassette-stage { gap: 5px; grid-template-columns: 32px minmax(0,1fr) 32px; }
+  .cassette-image { height: 170px; }
+  .track-controls { flex-wrap: nowrap; gap: 4px; }
+  .track-time { font-size: 10px; }
 }
 
-/* 6. The three collected items and a labelled floppy disk. */
-.activity--capsule {
-  padding: 25px;
-}
+/* Panel 06: compact capsule collection, period-appropriate floppy and divider lines. */
+.desktop__window-stage--capsule { width: min(650px, 100%); }
+.activity--capsule { padding: 12px 17px 14px; }
 .capsule-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr);
+  gap: 15px;
   align-items: center;
 }
 .capsule-slots {
-  background: #d9d9d9;
-  padding: 4px 14px;
+  background: #dbdbe0;
+  padding: 3px 12px;
   border-radius: 8px;
+  box-shadow: inset 1px 1px #fafafa;
 }
 .capsule-slot {
-  width: 100%;
-  border: 0;
-  border-bottom: 1px dashed #999;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  gap: 17px;
-  padding: 19px 0;
-  text-align: left;
-  color: #111;
+  display: flex; align-items: center; width: 100%;
+  gap: 11px; padding: 10px 0;
+  border: 0; border-bottom: 1px dashed #9d9da8;
+  background: transparent; text-align: left; color: #111;
 }
-.capsule-slot:last-child {
-  border-bottom: 0;
-}
-.capsule-slot__image {
-  width: 53px;
-  flex-shrink: 0;
-}
+.capsule-slot:last-child { border-bottom: 0; }
+.capsule-slot__image { width: 51px; flex: 0 0 51px; }
+.capsule-slot__image svg { width: 40px; height: 40px; image-rendering: pixelated; }
 .capsule-thumbnail {
-  display: block;
-  width: 51px;
-  height: 63px;
-  border: 5px solid #fff;
-  border-bottom-width: 12px;
-  object-fit: cover;
-  box-shadow: 1px 2px 1px #888;
+  display: block; width: 44px; height: 54px;
+  border: 4px solid #fff; border-bottom-width: 10px;
+  object-fit: cover; box-shadow: 1px 2px 1px #888;
   transform: rotate(-9deg);
 }
 .capsule-slot__content {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 0;
-  overflow-wrap: anywhere;
-  font-size: 15px;
-  line-height: 1.3;
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 0; overflow-wrap: anywhere;
+  font-size: 13px; line-height: 1.22;
 }
-.capsule-slot__content strong {
-  font-size: 19px;
+.capsule-slot__content strong { font-size: 16px; }
+.collection-check { color: #13812c; font-size: 21px; margin-left: 4px; vertical-align: middle; }
+.collection-empty { color: #555; }
+.capsule-floppy { display: block; width: 100%; height: 215px; object-fit: contain; }
+.capsule-footer { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 10px; }
+.capsule-footer > span { font-size: 11px; color: #515151; margin-right: auto; }
+.capsule-footer button { min-width: 194px; min-height: 34px; padding: 6px 12px; font-weight: bold; font-size: 14px; }
+@media (max-width: 600px) {
+  .capsule-layout { grid-template-columns: 1fr; gap: 5px; }
+  .capsule-floppy { height: 160px; }
+  .capsule-footer { flex-direction: column; align-items: stretch; }
+  .capsule-footer button { width: 100%; }
 }
-.collection-check {
-  color: #13812c;
-  font-size: 27px;
-  vertical-align: middle;
-  margin-left: 4px;
+/* 7. A short, classic segmented Windows progress dialog. */
+.sealing {
+  padding: 35px 50px 45px;
+  text-align: center;
 }
-.collection-empty {
-  color: #555;
+.sealing > svg {
+  margin-bottom: 20px;
 }
-.capsule-floppy {
-  width: 100%;
-  height: 290px;
-  object-fit: contain;
+.sealing h2,
+.sealing p {
+  font:
+    19px/1.7 'Courier New',
+    monospace;
 }
-.capsule-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  margin-top: 25px;
-}
-.capsule-footer > span {
-  font-size: 13px;
-}
-.capsule-footer button {
-  min-width: 220px;
-  font-weight: bold;
-}
-
-/* Panel 07: deliberately small 1990s Windows progress dialog. */
-.desktop__window-stage--sealing { width: min(490px, 100%); }
-.retro-window--sealing .retro-window__titlebar { height: 26px; }
-.retro-window--sealing .retro-window__heading { font-size: 14px; font-weight: normal; }
-.sealing { padding: 19px 38px 27px; text-align: center; }
-.sealing > svg { display: block; width: 42px; height: 42px; margin: 0 auto 14px; shape-rendering: crispEdges; }
-.sealing h2, .sealing p { font: 16px/1.55 'Courier New', monospace; }
 .sealing__progress {
   display: flex; gap: 2px; height: 25px;
   padding: 4px; box-shadow: var(--sunken);
@@ -877,115 +819,61 @@
   .sealing { padding: 18px 12px 22px; }
   .sealing h2, .sealing p { font-size: 14px; }
 }
-/* 8–9. One personalised scrapbook result; a quiet CRT-style status below it. */
-.final-experience {
-  background: #1c2e53;
-  padding: 22px;
-}
-.final-card {
-  background: #f2e3c1 url('/images/1996/scrapbook.png') center / 100% 100% no-repeat;
-  padding: 42px 40px 40px;
-  color: #17223c;
-  min-height: 480px;
-}
-.final-card__header {
-  display: flex;
-  gap: 17px;
-  align-items: center;
-  margin: 0 0 26px 35px;
-}
-.final-card__header h2 {
-  font:
-    900 35px/1.05 'Courier New',
-    monospace;
-  letter-spacing: -1px;
-}
-.final-card__header p {
-  margin-top: 8px;
-  font-size: 15px;
-}
-.final-card__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr);
-  gap: 28px;
-  align-items: start;
-}
-.final-photo {
-  padding: 10px 10px 15px;
-  background: #f8f5e9;
-  box-shadow: 2px 3px 3px #7b6c5480;
-  transform: rotate(-7deg);
-  margin: 0 4px 0 0;
-}
-.final-photo img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.9);
-}
-.final-photo figcaption {
-  text-align: center;
-  font:
-    italic 20px/1.15 'Comic Sans MS',
-    cursive;
-  color: #111;
-  padding-top: 12px;
-}
-.final-note {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  border-bottom: 1px dashed #9a8e7b;
-  padding: 12px 0;
-  font-size: 15px;
-  line-height: 1.4;
-}
-.final-note:first-child {
-  padding-top: 0;
-}
-.final-note p {
-  overflow-wrap: anywhere;
-}
-.final-note b {
-  margin-right: 5px;
-}
-.final-highlight {
-  background: #f9e98c;
-  margin: 20px 0 10px;
-  padding: 7px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.3;
-  transform: rotate(-1deg);
-}
-.final-footnote {
-  text-align: center;
-  font:
-    13px/1.5 'Courier New',
-    monospace;
-}
-.final-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin-top: 18px;
-}
-.crt-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #8fea98;
-  text-shadow: 0 0 6px #65ce6c80;
-  font:
-    12px 'Courier New',
-    monospace;
-}
-.final-actions button {
-  min-width: 140px;
-}
 
+/* Panel 08: paper scrapbook keepsake as a single compact hand-made card. */
+.desktop__window-stage--final { width: min(850px, 100%); }
+.final-experience { background: #172448; padding: 12px; }
+.final-card {
+  position: relative;
+  overflow: hidden;
+  background: #f2e3c1 url('/images/1996/scrapbook.png') center / 100% 100% no-repeat;
+  padding: 26px 38px 31px;
+  color: #17223c;
+  min-height: 385px;
+  border: 3px solid #d9c59c;
+  box-shadow: inset 0 0 0 3px #e6d5b6, 3px 3px 0 #101a35;
+  clip-path: polygon(0.4% 3%, 2% 1%, 10% 1.6%, 17% .6%, 29% 1.5%, 43% 0%, 53% 1%, 65% 0.4%, 79% 1.3%, 92% .3%, 98.8% 2%, 99.5% 16%, 99% 32%, 100% 53%, 99% 69%, 99.7% 85%, 98.5% 98%, 88% 99%, 73% 98.4%, 60% 100%, 48% 99%, 33% 100%, 22% 98.5%, 9% 99%, 1% 97%, 0% 86%, 1% 71%, .2% 56%, 1% 36%);
+}
+.final-card::before {
+  content: '☆  ☆'; position: absolute; top: 21px; left: 11px;
+  color: #315eaa; font: bold 25px/1 'Courier New',monospace;
+  transform: rotate(-12deg); pointer-events: none;
+}
+.final-card::after {
+  content: ''; position: absolute; right: 5px; top: 1px;
+  width: 57px; height: 66px; transform: rotate(39deg) translate(10px,-12px);
+  background: linear-gradient(90deg,#e75f63 0 18%,#eebd48 18% 36%,#87be6d 36% 54%,#6db5c9 54% 72%,#7970b1 72% 90%,transparent 90%);
+  pointer-events: none;
+}
+.final-card__header { display:flex; gap: 13px; align-items:center; margin: 0 0 15px 53px; }
+.final-card__header h2 { font: 900 30px/1.1 'Courier New',monospace; letter-spacing: -.9px; }
+.final-card__header p { margin-top: 4px; font-size: 13px; }
+.final-card__grid { display:grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.75fr); gap: 19px; align-items: start; }
+.final-photo {
+  padding: 9px 9px 14px; background:#f7f1df; box-shadow:2px 3px 2px #7b6c5480;
+  transform:rotate(-6deg); margin: 5px 2px 0 0;
+}
+.final-photo img { width:100%; aspect-ratio:1; object-fit:cover; display:block; filter:saturate(.9); }
+.final-photo figcaption { text-align:center; font:italic 17px/1.2 'Comic Sans MS',cursive; color:#111; padding-top:7px; }
+.final-note { display:flex; gap:10px; align-items:center; border-bottom:2px dotted #9a8e7b; padding: 9px 0; font-size:13px; line-height:1.25; }
+.final-note:first-child { padding-top:1px; }
+.final-note p { overflow-wrap:anywhere; }
+.final-note b { margin-right:5px; }
+.final-note svg { width:30px; height:30px; }
+.final-highlight { background:#f9e98c; margin:10px 0 6px; padding:6px; text-align:center; font-size:13px; line-height:1.3; transform:rotate(-1deg); }
+.final-footnote { text-align:center; font:12px/1.4 'Courier New',monospace; }
+.final-actions { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:10px; }
+.crt-status { display:flex; align-items:center; gap:8px; color:#8fea98; text-shadow:0 0 6px #65ce6c80; font:12px 'Courier New',monospace; }
+.final-actions button { min-width:140px; }
+@media (max-width: 600px) {
+  .final-card { padding:17px 12px 20px; border:15px solid transparent; border-image:url('/images/1996/scrapbook.png') 150 fill stretch; clip-path:none; }
+  .final-card::before,.final-card::after { display:none; }
+  .final-card__header { margin:0 0 15px; gap:8px; }
+  .final-card__header h2 { font-size:22px; }
+  .final-card__grid { grid-template-columns:1fr; }
+  .final-photo { width: min(180px,80%); margin:0 auto 12px; }
+  .final-actions { flex-direction:column; }
+}
 /* Keep the same objects and controls reachable on smaller displays. */
 @media (max-width: 1100px) {
   .desktop {
@@ -1611,4 +1499,50 @@
   .desktop--phone {
     align-items: flex-start;
   }
+}
+
+/* Panel 09: optional CRT flourish after the personalised keepsake.
+   Drawn in CSS so the green completion copy stays crisp, editable and accessible. */
+.final-actions__buttons { display:flex; align-items:center; gap:8px; }
+.final-actions__buttons .retro-button { min-width:125px; font-size:13px; padding:7px 10px; }
+.crt-room {
+  position:relative; display:flex; justify-content:center; align-items:center;
+  overflow:hidden; min-height:455px; padding:24px 45px 25px;
+  background:radial-gradient(ellipse at 48% 32%,#52344b 0%,#2a1c32 53%,#130e1e 100%);
+}
+.crt-room__poster { position:absolute; left:18px; top:25px; transform:rotate(-8deg);
+  font:bold 43px/1 'Courier New',monospace; color:#db7195; opacity:.55; }
+.crt-room__lamp { position:absolute; left:7%; bottom:40px; width:50px; height:185px;
+  background:linear-gradient(90deg,#56243f,#ed629a 50%,#43172f); border-radius:42% 42% 35% 35%;
+  box-shadow:0 0 28px #e64b9c70; opacity:.85; }
+.crt-room__lamp::before { content:''; position:absolute; width:26px; height:45px; top:33px; left:12px;
+  background:#ffa0c5; border-radius:50%; filter:blur(6px); }
+.crt-room__lamp::after { content:''; position:absolute; bottom:-12px; left:-7px; width:64px; height:18px;
+  background:#211b24; border-radius:50%; }
+.crt-computer { position:relative; width:min(450px,100%); z-index:1; background:#a38b79;
+  border:11px solid #a9907d; border-radius:26px 26px 12px 12px;
+  box-shadow:inset 5px 4px #cbb5a1,inset -7px -5px #766353,14px 18px 0 #100e1b60;
+  transform:rotate(-1deg); }
+.crt-computer__bezel { background:#836c5d; padding:26px 22px 18px; border-radius:37px 37px 18px 18px;
+  box-shadow:inset 5px 5px 8px #443c37,inset -4px -5px 5px #dec4a4; }
+.crt-computer__screen { min-height:275px; display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:14px; padding:24px 13px; background:#092b20;
+  border:10px solid #292d27; border-radius:35% / 12%;
+  box-shadow:inset 0 0 32px #030e0b,0 0 6px #80ed9999; color:#75ff99;
+  text-align:center; text-shadow:0 0 7px #67f58c; font:15px/1.32 'Courier New',monospace; }
+.crt-computer__screen svg { filter:brightness(0) saturate(100%) invert(90%) sepia(19%) saturate(1150%) hue-rotate(69deg); }
+.crt-computer__screen strong { font-size:19px; }
+.crt-computer__chin { height:39px; display:flex; justify-content:flex-end; align-items:center; padding:0 22px;
+  background:#ab9582; color:#6ed36d; border-top:2px solid #736253; }
+.crt-room__sticky { position:absolute; bottom:13px; right:15%; padding:1px 12px;
+  transform:rotate(-7deg); background:#ebc94e; color:#242028; font:30px Arial,sans-serif; z-index:2; }
+@media (max-width:600px) {
+  .crt-room { padding:15px 8px; min-height:380px; }
+  .crt-computer__bezel { padding:16px 11px 12px; }
+  .crt-computer__screen { min-height:240px; font-size:12px; }
+  .crt-computer__screen strong { font-size:16px; }
+  .crt-room__lamp { opacity:.25; }
+  .crt-room__sticky { right:8px; }
+  .final-actions__buttons { flex-wrap:wrap; width:100%; }
+  .final-actions__buttons button { flex:1; }
 }
