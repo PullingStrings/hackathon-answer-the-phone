@@ -17,6 +17,8 @@ export default function CassettePlayer({ savedId, onChoose, notify }: Props) {
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [audioError, setAudioError] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const track = tracks[index];
@@ -24,6 +26,8 @@ export default function CassettePlayer({ savedId, onChoose, notify }: Props) {
   useEffect(() => {
     setPlaying(false);
     setProgress(0);
+    setCurrentTime(0);
+    setDuration(0);
     setAudioError(false);
     if (!track.audioSrc) {
       audioRef.current = null;
@@ -33,21 +37,24 @@ export default function CassettePlayer({ savedId, onChoose, notify }: Props) {
     audio.preload = 'metadata';
     audio.muted = muted;
     audioRef.current = audio;
-    const sync = () =>
-      setProgress(
-        audio.duration && Number.isFinite(audio.duration) ? audio.currentTime / audio.duration : 0,
-      );
+    const sync = () => {
+      setCurrentTime(audio.currentTime);
+      setDuration(Number.isFinite(audio.duration) ? audio.duration : 0);
+      setProgress(audio.duration && Number.isFinite(audio.duration) ? audio.currentTime / audio.duration : 0);
+    };
     const ended = () => setPlaying(false);
     const fail = () => {
       setAudioError(true);
       setPlaying(false);
     };
     audio.addEventListener('timeupdate', sync);
+    audio.addEventListener('loadedmetadata', sync);
     audio.addEventListener('ended', ended);
     audio.addEventListener('error', fail);
     return () => {
       audio.pause();
       audio.removeEventListener('timeupdate', sync);
+      audio.removeEventListener('loadedmetadata', sync);
       audio.removeEventListener('ended', ended);
       audio.removeEventListener('error', fail);
       audio.removeAttribute('src');
@@ -77,6 +84,10 @@ export default function CassettePlayer({ savedId, onChoose, notify }: Props) {
         setPlaying(false);
       }
     }
+  }
+  function clock(seconds: number) {
+    const safe = Math.floor(Number.isFinite(seconds) && seconds >= 0 ? seconds : 0);
+    return `${Math.floor(safe / 60)}:${String(safe % 60).padStart(2, '0')}`;
   }
   function choose() {
     onChoose(track.id);
@@ -129,15 +140,9 @@ export default function CassettePlayer({ savedId, onChoose, notify }: Props) {
         >
           <span style={{ width: `${progress * 100}%` }} />
         </div>
-        <button
-          type="button"
-          className="retro-button"
-          onClick={() => setMuted((value) => !value)}
-          disabled={!hasAudio}
-          aria-label={muted ? 'Unmute track' : 'Mute track'}
-        >
-          {muted ? 'Muted' : 'Vol'}
-        </button>
+        <span className="track-time" aria-label="Playback time">
+          {clock(currentTime)} / {duration > 0 ? clock(duration) : '--:--'}
+        </span>
       </div>
       {!hasAudio && (
         <p className="audio-unavailable" role="status">
