@@ -710,69 +710,40 @@
   background: #dedede;
   box-shadow: var(--sunken);
 }
-/* 5. The cassette is the focal object, with classic transport controls. */
-.activity--music {
-  padding: 22px 32px 27px;
-  text-align: center;
+/* Panel 05: compact Win95 music player with the cassette as the hero. */
+.desktop__window-stage--music { width: min(620px, 100%); }
+.retro-window--music .retro-window__body {
+  background: #bcbcbc url('/images/1996/grain.svg');
 }
+.activity--music { padding: 12px 19px 16px; text-align: center; }
 .cassette-stage {
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) 44px;
-  gap: 22px;
+  grid-template-columns: 36px minmax(0, 1fr) 36px;
   align-items: center;
+  gap: 13px;
 }
-.cassette-image {
-  width: 100%;
-  height: 290px;
-  object-fit: contain;
-}
-.track-title {
-  font-size: 21px;
-  margin-top: 4px;
-}
-.track-description {
-  font-size: 15px;
-  margin: 6px 0 19px;
-}
+.cassette-stage .arrow-button { width: 33px; min-width: 33px; height: 33px; min-height: 33px; padding: 3px; }
+.cassette-image { display: block; width: 100%; height: 235px; object-fit: contain; image-rendering: auto; }
+.track-title { margin-top: 0; font-size: 17px; line-height: 1.25; font-weight: bold; }
+.track-description { font-size: 13px; line-height: 1.3; margin: 3px 0 8px; }
 .track-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 8px;
+  display: flex; align-items: center; gap: 8px; width: min(430px,100%);
+  margin: 0 auto; padding: 5px; background: #c6c6c6;
   box-shadow: var(--sunken);
 }
-.track-controls button {
-  min-width: 44px;
-  min-height: 31px;
-  padding: 5px 9px;
-  font-size: 14px;
+.track-controls button { min-width: 33px; min-height: 29px; padding: 3px 6px; font-size: 14px; }
+.track-progress { flex: 1; height: 13px; min-width: 0; padding: 2px; background: #eee; box-shadow: var(--sunken); }
+.track-progress span { display: block; height: 100%; background: #000080; }
+.track-time { white-space: nowrap; font: 12px/1.2 'MS Sans Serif',Tahoma,Arial,sans-serif; }
+.audio-unavailable { font-size: 11px; color: #454545; margin: 6px 0 4px; }
+.track-add { min-width: 185px; min-height: 29px; padding: 5px 14px; margin-top: 7px; font-size: 13px; }
+.activity--music .hint { margin-top: 7px; }
+@media (max-width: 600px) {
+  .cassette-stage { gap: 5px; grid-template-columns: 32px minmax(0,1fr) 32px; }
+  .cassette-image { height: 170px; }
+  .track-controls { flex-wrap: nowrap; gap: 4px; }
+  .track-time { font-size: 10px; }
 }
-.track-progress {
-  flex: 1;
-  height: 12px;
-  padding: 3px;
-  background: #e5e5e5;
-  box-shadow: var(--sunken);
-}
-.track-progress span {
-  display: block;
-  height: 100%;
-  background: #000080;
-}
-.audio-unavailable {
-  font-size: 12px;
-  color: #454545;
-  margin: 12px 0 18px;
-}
-.track-add {
-  min-width: 240px;
-}
-.activity--music .hint {
-  margin-top: 10px;
-}
-
 /* 6. The three collected items and a labelled floppy disk. */
 .activity--capsule {
   padding: 25px;
