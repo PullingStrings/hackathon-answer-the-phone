@@ -325,45 +325,49 @@
   }
 }
 
-/* 2. Physical slide reel, rounded viewing aperture and paper caption. */
+/* 2. View-Master: match the compact window and physical reel in reference panel 02. */
+.desktop__window-stage--memory {
+  width: min(690px, 100%);
+}
+
 .retro-window--memory:has(.activity--memory-gallery)::before {
   content: '';
   position: absolute;
   z-index: -1;
-  width: 410px;
-  height: 410px;
-  top: 42px;
-  left: -112px;
+  width: 345px;
+  height: 345px;
+  top: 27px;
+  left: -94px;
   background: url('/images/1996/viewer-reel.svg') center / contain no-repeat;
   transform: rotate(-12deg);
 }
 .activity--memory {
   text-align: center;
-  padding: 15px 22px 25px;
+  padding: 12px 19px 22px;
 }
 .viewer-counter {
   text-align: right;
   font:
     16px 'Courier New',
     monospace;
-  margin: 0 3px 12px;
+  margin: 0 4px 4px;
 }
 .viewer {
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  grid-template-columns: 38px minmax(0, 1fr) 38px;
   align-items: center;
-  gap: 25px;
+  gap: 14px;
 }
 .viewer-frame {
   position: relative;
-  padding-bottom: 14px;
+  padding-bottom: 11px;
   width: 100%;
-  max-width: 490px;
+  max-width: 450px;
   justify-self: center;
 }
 .viewer-image {
-  height: 335px;
-  border-radius: 72px;
+  height: 293px;
+  border-radius: 63px;
   border: 7px solid #e8e8e8;
   background: #1e1826;
   box-shadow: 1px 1px #808080;
@@ -380,30 +384,14 @@
   position: relative;
   display: table;
   max-width: 95%;
-  margin: -9px auto 0;
+  margin: -12px auto 0;
   background: #f5edab;
-  padding: 5px 23px;
+  padding: 5px 24px;
   font-size: 16px;
 }
-.memory-dots {
-  display: flex;
-  gap: 7px;
-  justify-content: center;
-  margin: 7px 0 14px;
-}
-.memory-dots button {
-  width: 9px;
-  height: 9px;
-  border: 1px solid #777;
-  padding: 0;
-  background: #ddd;
-}
-.memory-dots button.is-current {
-  background: #000080;
-  border-color: #000080;
-}
 .memory-choose {
-  min-width: 310px;
+  min-width: 282px;
+  margin-top: 11px;
   font-weight: bold;
 }
 .memory-choose span {
