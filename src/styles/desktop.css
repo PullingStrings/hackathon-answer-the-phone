@@ -858,36 +858,25 @@
   font-weight: bold;
 }
 
-/* 7. A short, classic segmented Windows progress dialog. */
-.sealing {
-  padding: 35px 50px 45px;
-  text-align: center;
-}
-.sealing > svg {
-  margin-bottom: 20px;
-}
-.sealing h2,
-.sealing p {
-  font:
-    19px/1.7 'Courier New',
-    monospace;
-}
+/* Panel 07: deliberately small 1990s Windows progress dialog. */
+.desktop__window-stage--sealing { width: min(490px, 100%); }
+.retro-window--sealing .retro-window__titlebar { height: 26px; }
+.retro-window--sealing .retro-window__heading { font-size: 14px; font-weight: normal; }
+.sealing { padding: 19px 38px 27px; text-align: center; }
+.sealing > svg { display: block; width: 42px; height: 42px; margin: 0 auto 14px; shape-rendering: crispEdges; }
+.sealing h2, .sealing p { font: 16px/1.55 'Courier New', monospace; }
 .sealing__progress {
-  display: flex;
-  gap: 3px;
-  height: 30px;
-  padding: 5px;
-  box-shadow: var(--sunken);
-  background: #dedede;
-  margin-top: 20px;
+  display: flex; gap: 2px; height: 25px;
+  padding: 4px; box-shadow: var(--sunken);
+  background: #dedede; margin: 15px auto 0;
+  width: min(360px, 100%);
 }
-.sealing__progress span {
-  flex: 1;
+.sealing__progress span { flex: 1; min-width: 0; }
+.sealing__progress .is-filled { background: #000080; }
+@media (max-width: 600px) {
+  .sealing { padding: 18px 12px 22px; }
+  .sealing h2, .sealing p { font-size: 14px; }
 }
-.sealing__progress .is-filled {
-  background: #000080;
-}
-
 /* 8–9. One personalised scrapbook result; a quiet CRT-style status below it. */
 .final-experience {
   background: #1c2e53;
