@@ -808,19 +808,16 @@
     monospace;
 }
 .sealing__progress {
-  display: flex;
-  gap: 3px;
-  height: 30px;
-  padding: 5px;
-  box-shadow: var(--sunken);
-  background: #dedede;
-  margin-top: 20px;
+  display: flex; gap: 2px; height: 25px;
+  padding: 4px; box-shadow: var(--sunken);
+  background: #dedede; margin: 15px auto 0;
+  width: min(360px, 100%);
 }
-.sealing__progress span {
-  flex: 1;
-}
-.sealing__progress .is-filled {
-  background: #000080;
+.sealing__progress span { flex: 1; min-width: 0; }
+.sealing__progress .is-filled { background: #000080; }
+@media (max-width: 600px) {
+  .sealing { padding: 18px 12px 22px; }
+  .sealing h2, .sealing p { font-size: 14px; }
 }
 
 /* Panel 08: paper scrapbook keepsake as a single compact hand-made card. */
