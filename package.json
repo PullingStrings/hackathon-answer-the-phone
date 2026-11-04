@@ -1,0 +1,27 @@
+{
+  "name": "hackathon-answer-the-phone",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b --pretty false",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "format": "prettier --write src tests package.json tsconfig.json vite.config.ts index.html",
+    "format:check": "prettier --check src tests package.json tsconfig.json vite.config.ts index.html",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "prettier": "3.9.10",
+    "typescript": "~5.6.3",
+    "vite": "~6.4.5"
+  }
+}

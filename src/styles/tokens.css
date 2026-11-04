@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('/fonts/PressStart2P-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --desktop: #008080;
+  --window: #c0c0c0;
+  --titlebar: #000080;
+  --text: #111;
+  --raised:
+    inset 1px 1px #fff, inset -1px -1px #0a0a0a, inset 2px 2px #dfdfdf, inset -2px -2px #808080;
+  --sunken:
+    inset 1px 1px #808080, inset -1px -1px #fff, inset 2px 2px #0a0a0a, inset -2px -2px #dfdfdf;
+  font-family: 'MS Sans Serif', Tahoma, Arial, sans-serif;
+  font-size: 16px;
+  color: var(--text);
+}

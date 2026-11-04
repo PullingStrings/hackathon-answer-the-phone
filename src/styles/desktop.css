@@ -1,0 +1,1543 @@
+/* Windows chrome is CSS; physical objects and scenes are local original artwork. */
+.desktop {
+  position: relative;
+  height: 100dvh;
+  min-height: 400px;
+  background: #008080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 42px 60px 80px 160px;
+  isolation: isolate;
+}
+.desktop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/images/1996/grain.svg');
+  opacity: 0.13;
+}
+.desktop__icons {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+  width: 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.desktop-icon {
+  border: 1px dotted transparent;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  padding: 4px;
+  width: 88px;
+  min-height: 74px;
+  color: #fff;
+  text-shadow: 1px 1px #004348;
+  line-height: 1.15;
+}
+.desktop-icon__art {
+  position: relative;
+  height: 41px;
+  filter: drop-shadow(1px 2px 0 #004c4c);
+}
+.desktop-icon__art img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+}
+.desktop-icon__label {
+  font-size: 13px;
+  max-width: 78px;
+}
+.desktop-icon.is-selected .desktop-icon__label,
+.desktop-icon:focus-visible .desktop-icon__label {
+  background: #000080;
+  outline: 1px dotted #fff;
+}
+.desktop--intro .desktop-icon.is-selected:not(:focus-visible) .desktop-icon__label {
+  background: transparent;
+  outline: 0;
+}
+.desktop-icon:focus-visible {
+  outline: none;
+}
+.desktop-icon__badge {
+  position: absolute;
+  right: -4px;
+  bottom: -1px;
+  width: 9px;
+  height: 9px;
+  background: #b5d58a;
+  border: 1px solid #174821;
+}
+.desktop__window-stage {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+}
+.desktop__window-stage--welcome {
+  width: min(900px, 100%);
+}
+.desktop__window-stage--phone {
+  width: min(780px, 100%);
+  padding-left: 232px;
+}
+.desktop__window-stage--sealing {
+  width: min(660px, 100%);
+}
+.desktop__window-stage--final {
+  width: min(880px, 100%);
+}
+.retro-window {
+  position: relative;
+  padding: 3px;
+  background: var(--window);
+  box-shadow:
+    var(--raised),
+    3px 3px 0 #003c3e;
+}
+.retro-window__titlebar {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 3px 3px 5px;
+  background: var(--titlebar);
+  color: #fff;
+}
+.retro-window__heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+.retro-window__heading > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.retro-window__heading svg {
+  width: 20px;
+  height: 20px;
+}
+.retro-window--welcome .retro-window__heading {
+  gap: 0;
+  font-size: 11px;
+  font-weight: normal;
+}
+.retro-window--welcome .retro-window__heading svg {
+  display: none;
+}
+.retro-window__close {
+  width: 23px;
+  height: 22px;
+  padding: 0 0 2px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--window);
+  box-shadow: var(--raised);
+  font:
+    24px/20px Arial,
+    sans-serif;
+  color: #111;
+}
+.retro-window__close:active {
+  box-shadow: var(--sunken);
+}
+.retro-window__body {
+  max-height: calc(100dvh - 158px);
+  overflow: auto;
+  background: var(--window);
+  scrollbar-color: #c0c0c0 #dedede;
+  scrollbar-width: auto;
+}
+.retro-window__body::-webkit-scrollbar {
+  width: 16px;
+  background: #dedede;
+}
+.retro-window__body::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  box-shadow: var(--raised);
+}
+.activity {
+  padding: 24px;
+}
+.taskbar {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: stretch;
+  gap: 7px;
+  padding: 4px;
+  background: var(--window);
+  box-shadow:
+    inset 0 1px #fff,
+    0 -1px #dfdfdf;
+  font-size: 13px;
+}
+.start-button,
+.taskbar__tab {
+  background: var(--window);
+  box-shadow: var(--raised);
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 9px;
+  color: #111;
+}
+.start-button {
+  font-size: 18px;
+}
+.start-logo {
+  width: 27px;
+  height: 21px;
+  image-rendering: pixelated;
+}
+.taskbar__separator {
+  border-left: 1px solid #808080;
+  border-right: 1px solid #fff;
+  margin: 2px 0;
+}
+.taskbar__tab {
+  width: 220px;
+  min-width: 0;
+  font-size: 13px;
+}
+.taskbar__tab span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.taskbar__tab--active {
+  box-shadow: var(--sunken);
+  font-weight: bold;
+}
+.taskbar__spacer {
+  flex: 1;
+}
+.taskbar__progress {
+  background: transparent;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+}
+.taskbar__clock {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  box-shadow:
+    inset 1px 1px #808080,
+    inset -1px -1px #fff;
+  padding: 2px 9px;
+  white-space: nowrap;
+}
+.desktop--intro .taskbar__tab,
+.desktop--intro .taskbar__progress,
+.desktop--intro .taskbar__separator {
+  display: none;
+}
+.desktop--intro .taskbar__clock {
+  margin-left: auto;
+  box-shadow: none;
+}
+.toast-region {
+  position: fixed;
+  right: 14px;
+  bottom: 53px;
+  z-index: 20;
+  pointer-events: none;
+  max-width: calc(100vw - 28px);
+}
+.toast {
+  background: #ffffdf;
+  border: 1px solid #000;
+  box-shadow: 2px 2px #4446;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 15px;
+  font-size: 13px;
+}
+.toast__mark {
+  color: #17802e;
+  font-weight: bold;
+}
+
+/* 1. Welcome: compact, centred setup dialog. */
+.welcome {
+  min-height: 510px;
+  padding: 43px 30px 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 19px;
+  text-align: center;
+}
+.welcome__computer {
+  width: 76px;
+  height: 76px;
+  image-rendering: pixelated;
+}
+.welcome h1 {
+  font:
+    400 27px/1.4 'Press Start 2P',
+    monospace;
+  margin: 7px 0 2px;
+}
+.welcome p {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: -0.75px;
+}
+.welcome__action {
+  margin-top: 7px;
+  min-width: 166px;
+  font-weight: bold;
+}
+
+@media (min-width: 801px) {
+  .desktop--intro .desktop__icons {
+    top: 7%;
+    left: 5%;
+    width: 12%;
+    gap: 10px;
+  }
+  .desktop--intro .desktop-icon {
+    width: 100%;
+    min-height: 95px;
+    gap: 6px;
+  }
+  .desktop--intro .desktop-icon__art {
+    height: 56px;
+  }
+  .desktop--intro .desktop-icon__art img {
+    width: 56px;
+    height: 56px;
+  }
+  .desktop--intro .desktop-icon__label {
+    font-size: clamp(17px, 2vw, 28px);
+    max-width: 150px;
+  }
+  .desktop--intro .desktop__window-stage--welcome {
+    position: absolute;
+    top: 14%;
+    left: 24.5%;
+    width: 72%;
+  }
+  .desktop--intro .retro-window__titlebar {
+    height: 47px;
+  }
+  .desktop--intro .retro-window--welcome .retro-window__heading {
+    font-size: clamp(11px, 2vw, 28px);
+  }
+  .desktop--intro .welcome {
+    min-height: calc(74dvh - 52px);
+    padding: 35px 24px;
+    gap: clamp(12px, 2.5vh, 27px);
+  }
+  .desktop--intro .welcome__computer {
+    width: 88px;
+    height: 88px;
+  }
+  .desktop--intro .welcome h1 {
+    font-size: clamp(22px, 3vw, 46px);
+    line-height: 1.25;
+    margin-top: 35px;
+  }
+  .desktop--intro .welcome p:first-of-type {
+    margin-top: 25px;
+  }
+  .desktop--intro .welcome p + p {
+    margin-top: 12px;
+  }
+  .desktop--intro .welcome p {
+    font-size: clamp(9px, 1.55vw, 23px);
+  }
+  .desktop--intro .welcome__action {
+    min-width: 220px;
+    min-height: 60px;
+    margin-top: 45px;
+    font-size: 20px;
+  }
+  .desktop--intro .taskbar {
+    height: 8dvh;
+  }
+  .desktop--intro .start-button {
+    width: min(16%, 220px);
+    font-size: 27px;
+  }
+  .desktop--intro .start-logo {
+    width: 44px;
+    height: 33px;
+  }
+  .desktop--intro .taskbar__clock {
+    font-size: 20px;
+  }
+  .desktop--intro .taskbar__clock svg {
+    width: 27px;
+    height: 27px;
+  }
+}
+@media (min-width: 801px) and (max-height: 800px) {
+  .desktop--intro .welcome {
+    padding: 20px 24px 25px;
+  }
+  .desktop--intro .welcome h1 {
+    margin-top: 15px;
+  }
+  .desktop--intro .welcome p:first-of-type {
+    margin-top: 8px;
+  }
+  .desktop--intro .welcome p + p {
+    margin-top: 0;
+  }
+  .desktop--intro .welcome__action {
+    margin-top: 18px;
+  }
+}
+@media (min-width: 1200px) and (max-height: 800px) {
+  .desktop--intro .desktop__window-stage--welcome {
+    top: 12%;
+  }
+}
+@media (min-width: 801px) and (max-height: 700px) {
+  .desktop--intro .desktop__icons {
+    top: 20px;
+    gap: 3px;
+  }
+  .desktop--intro .desktop-icon {
+    min-height: 72px;
+    gap: 2px;
+  }
+  .desktop--intro .desktop-icon__art {
+    height: 43px;
+  }
+  .desktop--intro .desktop-icon__art img {
+    width: 43px;
+    height: 43px;
+  }
+  .desktop--intro .desktop-icon__label {
+    font-size: 14px;
+  }
+  .desktop--intro .welcome {
+    min-height: 0;
+    padding: 12px;
+    gap: 7px;
+  }
+  .desktop--intro .welcome__computer {
+    width: 55px;
+    height: 55px;
+  }
+  .desktop--intro .welcome h1 {
+    margin: 0;
+    font-size: 22px;
+  }
+  .desktop--intro .welcome p {
+    margin: 0;
+    font-size: 14px;
+  }
+  .desktop--intro .welcome__action {
+    min-height: 38px;
+    margin: 4px 0 0;
+    font-size: 16px;
+  }
+}
+
+/* 2. Physical slide reel, rounded viewing aperture and paper caption. */
+.retro-window--memory:has(.activity--memory-gallery)::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 410px;
+  height: 410px;
+  top: 42px;
+  left: -112px;
+  background: url('/images/1996/viewer-reel.svg') center / contain no-repeat;
+  transform: rotate(-12deg);
+}
+.activity--memory {
+  text-align: center;
+  padding: 15px 22px 25px;
+}
+.viewer-counter {
+  text-align: right;
+  font:
+    16px 'Courier New',
+    monospace;
+  margin: 0 3px 12px;
+}
+.viewer {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 25px;
+}
+.viewer-frame {
+  position: relative;
+  padding-bottom: 14px;
+  width: 100%;
+  max-width: 490px;
+  justify-self: center;
+}
+.viewer-image {
+  height: 335px;
+  border-radius: 72px;
+  border: 7px solid #e8e8e8;
+  background: #1e1826;
+  box-shadow: 1px 1px #808080;
+  overflow: hidden;
+}
+.viewer-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+.viewer-frame figcaption {
+  position: relative;
+  display: table;
+  max-width: 95%;
+  margin: -9px auto 0;
+  background: #f5edab;
+  padding: 5px 23px;
+  font-size: 16px;
+}
+.memory-dots {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  margin: 7px 0 14px;
+}
+.memory-dots button {
+  width: 9px;
+  height: 9px;
+  border: 1px solid #777;
+  padding: 0;
+  background: #ddd;
+}
+.memory-dots button.is-current {
+  background: #000080;
+  border-color: #000080;
+}
+.memory-choose {
+  min-width: 310px;
+  font-weight: bold;
+}
+.memory-choose span {
+  margin-left: 9px;
+  font-size: 19px;
+}
+.activity--memory .hint {
+  margin-top: 10px;
+}
+
+/* 3. A real photograph develops inside a paper print. */
+.development-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+  padding: 22px 10px;
+  min-height: 400px;
+}
+.instant-photo {
+  padding: 14px 14px 21px;
+  background: #f3f2ed url('/images/1996/grain.svg');
+  box-shadow: 3px 4px 3px #777;
+  transform: rotate(-5deg);
+}
+.instant-photo__print {
+  aspect-ratio: 1 / 1.06;
+  background: #d1ccc0;
+  overflow: hidden;
+}
+.instant-photo__print img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.instant-photo--developing .instant-photo__print img {
+  animation: develop 1.75s ease-in-out both;
+}
+.instant-photo figcaption {
+  padding-top: 15px;
+  font:
+    italic 17px/1.3 'Comic Sans MS',
+    cursive;
+  min-height: 48px;
+}
+.development-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+}
+.development-copy h2 {
+  font-size: 18px;
+  font-weight: normal;
+}
+.development-progress {
+  width: 100%;
+  height: 27px;
+  box-shadow: var(--sunken);
+  background: #eee;
+  padding: 4px;
+}
+.development-progress span {
+  display: block;
+  height: 100%;
+  animation: photo-progress 1.75s linear both;
+  background: repeating-linear-gradient(90deg, #000080 0 13px, transparent 13px 16px);
+}
+.instant-camera {
+  width: 210px;
+  height: 190px;
+  object-fit: contain;
+}
+
+/* 4. The physical phone sits beside the Windows message dialog. */
+.retro-window--phone .retro-window__body {
+  min-height: 410px;
+}
+.phone-device {
+  position: absolute;
+  width: 340px;
+  height: 510px;
+  left: -300px;
+  top: -28px;
+}
+.phone-device > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(3px 5px 2px #004c4c);
+}
+.phone-screen {
+  position: absolute;
+  left: 28.5%;
+  top: 26.5%;
+  width: 42.5%;
+  height: 19%;
+  background: transparent;
+  border: 0;
+  border-radius: 3px;
+  color: #172e14;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font:
+    15px/1.15 'Courier New',
+    monospace;
+}
+.phone-screen svg {
+  width: 25px;
+  height: 25px;
+}
+.phone-screen:disabled {
+  color: #172e14;
+}
+.phone-navigation {
+  position: absolute;
+  top: 53.5%;
+  left: 27%;
+  width: 46%;
+  display: flex;
+  justify-content: space-between;
+}
+.phone-navigation button {
+  background: transparent;
+  box-shadow: none;
+  padding: 2px 7px;
+  min-height: 28px;
+  width: 34px;
+  font-size: 11px;
+}
+.phone-form {
+  min-height: 370px;
+  display: flex;
+  flex-direction: column;
+}
+.phone-prompt {
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: normal;
+  padding: 17px 22px;
+  margin-bottom: 19px;
+  background: #aaa9b4;
+  border-radius: 14px 14px 14px 0;
+  box-shadow: inset 1px 1px #eee;
+}
+.phone-new,
+.phone-sent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+  text-align: center;
+}
+.phone-new h3,
+.phone-sent h3 {
+  font-size: 18px;
+}
+.phone-new p,
+.phone-sent p {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.phone-new .retro-button,
+.phone-sent .retro-button {
+  margin-top: 12px;
+  min-width: 170px;
+}
+.prediction-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.prediction-option {
+  border: 0;
+  padding: 7px 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: transparent;
+  color: #111;
+  font-size: 16px;
+  line-height: 1.35;
+  border-radius: 13px;
+}
+.prediction-option.is-picked {
+  background: #b9e49a;
+}
+.prediction-radio {
+  width: 15px;
+  height: 15px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+}
+.is-picked .prediction-radio::after {
+  content: '';
+  display: block;
+  width: 7px;
+  height: 7px;
+  margin: 2px;
+  background: #111;
+  border-radius: 50%;
+}
+.custom-prediction {
+  display: flex;
+  flex-direction: column;
+  margin: 11px 0 0;
+  gap: 5px;
+  font-size: 13px;
+}
+.custom-prediction textarea {
+  border: 0;
+  border-radius: 0;
+  box-shadow: var(--sunken);
+  background: #fff;
+  padding: 7px;
+  resize: vertical;
+  min-height: 65px;
+  max-height: 150px;
+  width: 100%;
+}
+.custom-prediction small {
+  text-align: right;
+}
+.phone-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+.phone-form__actions button {
+  min-width: 110px;
+}
+.sent-preview {
+  width: 100%;
+  background: #dedede;
+  box-shadow: var(--sunken);
+  padding: 14px;
+}
+
+/* 5. The cassette is the focal object, with classic transport controls. */
+.activity--music {
+  padding: 22px 32px 27px;
+  text-align: center;
+}
+.cassette-stage {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  gap: 22px;
+  align-items: center;
+}
+.cassette-image {
+  width: 100%;
+  height: 290px;
+  object-fit: contain;
+}
+.track-title {
+  font-size: 21px;
+  margin-top: 4px;
+}
+.track-description {
+  font-size: 15px;
+  margin: 6px 0 19px;
+}
+.track-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 8px;
+  box-shadow: var(--sunken);
+}
+.track-controls button {
+  min-width: 44px;
+  min-height: 31px;
+  padding: 5px 9px;
+  font-size: 14px;
+}
+.track-progress {
+  flex: 1;
+  height: 12px;
+  padding: 3px;
+  background: #e5e5e5;
+  box-shadow: var(--sunken);
+}
+.track-progress span {
+  display: block;
+  height: 100%;
+  background: #000080;
+}
+.audio-unavailable {
+  font-size: 12px;
+  color: #454545;
+  margin: 12px 0 18px;
+}
+.track-add {
+  min-width: 240px;
+}
+.activity--music .hint {
+  margin-top: 10px;
+}
+
+/* 6. The three collected items and a labelled floppy disk. */
+.activity--capsule {
+  padding: 25px;
+}
+.capsule-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+.capsule-slots {
+  background: #d9d9d9;
+  padding: 4px 14px;
+  border-radius: 8px;
+}
+.capsule-slot {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px dashed #999;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 19px 0;
+  text-align: left;
+  color: #111;
+}
+.capsule-slot:last-child {
+  border-bottom: 0;
+}
+.capsule-slot__image {
+  width: 53px;
+  flex-shrink: 0;
+}
+.capsule-thumbnail {
+  display: block;
+  width: 51px;
+  height: 63px;
+  border: 5px solid #fff;
+  border-bottom-width: 12px;
+  object-fit: cover;
+  box-shadow: 1px 2px 1px #888;
+  transform: rotate(-9deg);
+}
+.capsule-slot__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 15px;
+  line-height: 1.3;
+}
+.capsule-slot__content strong {
+  font-size: 19px;
+}
+.collection-check {
+  color: #13812c;
+  font-size: 27px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.collection-empty {
+  color: #555;
+}
+.capsule-floppy {
+  width: 100%;
+  height: 290px;
+  object-fit: contain;
+}
+.capsule-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-top: 25px;
+}
+.capsule-footer > span {
+  font-size: 13px;
+}
+.capsule-footer button {
+  min-width: 220px;
+  font-weight: bold;
+}
+
+/* 7. A short, classic segmented Windows progress dialog. */
+.sealing {
+  padding: 35px 50px 45px;
+  text-align: center;
+}
+.sealing > svg {
+  margin-bottom: 20px;
+}
+.sealing h2,
+.sealing p {
+  font:
+    19px/1.7 'Courier New',
+    monospace;
+}
+.sealing__progress {
+  display: flex;
+  gap: 3px;
+  height: 30px;
+  padding: 5px;
+  box-shadow: var(--sunken);
+  background: #dedede;
+  margin-top: 20px;
+}
+.sealing__progress span {
+  flex: 1;
+}
+.sealing__progress .is-filled {
+  background: #000080;
+}
+
+/* 8–9. One personalised scrapbook result; a quiet CRT-style status below it. */
+.final-experience {
+  background: #1c2e53;
+  padding: 22px;
+}
+.final-card {
+  background: #f2e3c1 url('/images/1996/scrapbook.png') center / 100% 100% no-repeat;
+  padding: 42px 40px 40px;
+  color: #17223c;
+  min-height: 480px;
+}
+.final-card__header {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  margin: 0 0 26px 35px;
+}
+.final-card__header h2 {
+  font:
+    900 35px/1.05 'Courier New',
+    monospace;
+  letter-spacing: -1px;
+}
+.final-card__header p {
+  margin-top: 8px;
+  font-size: 15px;
+}
+.final-card__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr);
+  gap: 28px;
+  align-items: start;
+}
+.final-photo {
+  padding: 10px 10px 15px;
+  background: #f8f5e9;
+  box-shadow: 2px 3px 3px #7b6c5480;
+  transform: rotate(-7deg);
+  margin: 0 4px 0 0;
+}
+.final-photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.9);
+}
+.final-photo figcaption {
+  text-align: center;
+  font:
+    italic 20px/1.15 'Comic Sans MS',
+    cursive;
+  color: #111;
+  padding-top: 12px;
+}
+.final-note {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px dashed #9a8e7b;
+  padding: 12px 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.final-note:first-child {
+  padding-top: 0;
+}
+.final-note p {
+  overflow-wrap: anywhere;
+}
+.final-note b {
+  margin-right: 5px;
+}
+.final-highlight {
+  background: #f9e98c;
+  margin: 20px 0 10px;
+  padding: 7px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.3;
+  transform: rotate(-1deg);
+}
+.final-footnote {
+  text-align: center;
+  font:
+    13px/1.5 'Courier New',
+    monospace;
+}
+.final-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 18px;
+}
+.crt-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #8fea98;
+  text-shadow: 0 0 6px #65ce6c80;
+  font:
+    12px 'Courier New',
+    monospace;
+}
+.final-actions button {
+  min-width: 140px;
+}
+
+/* Keep the same objects and controls reachable on smaller displays. */
+@media (max-width: 1100px) {
+  .desktop {
+    padding-left: 125px;
+    padding-right: 30px;
+  }
+  .desktop__window-stage--phone {
+    padding-left: 205px;
+  }
+  .phone-device {
+    width: 300px;
+    height: 450px;
+    left: -267px;
+  }
+  .final-card {
+    padding: 35px 28px;
+  }
+  .final-card__header {
+    margin-left: 16px;
+  }
+  .final-card__header h2 {
+    font-size: 30px;
+  }
+}
+@media (max-width: 800px) {
+  .desktop {
+    padding-left: 112px;
+    padding-right: 20px;
+  }
+  .viewer {
+    gap: 12px;
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+  }
+  .arrow-button {
+    width: 36px;
+    height: 37px;
+  }
+  .viewer-image {
+    height: 270px;
+    border-radius: 45px;
+  }
+  .desktop__window-stage--phone {
+    padding-left: 155px;
+  }
+  .phone-device {
+    width: 230px;
+    left: -210px;
+    top: 10px;
+    height: 345px;
+  }
+  .phone-screen {
+    font-size: 12px;
+  }
+  .activity--phone {
+    padding: 17px;
+  }
+  .phone-prompt {
+    font-size: 18px;
+    padding: 13px;
+  }
+  .prediction-option {
+    font-size: 14px;
+    gap: 8px;
+  }
+  .phone-form__actions button {
+    min-width: 80px;
+  }
+  .cassette-stage {
+    gap: 12px;
+  }
+  .cassette-image {
+    height: 240px;
+  }
+  .capsule-layout {
+    gap: 12px;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+  }
+  .capsule-slot {
+    gap: 9px;
+  }
+  .capsule-slot__content strong {
+    font-size: 16px;
+  }
+  .capsule-slot__content {
+    font-size: 13px;
+  }
+  .final-card__grid {
+    gap: 18px;
+  }
+  .final-card__header {
+    margin-left: 0;
+    gap: 10px;
+  }
+  .final-card__header h2 {
+    font-size: 25px;
+  }
+  .final-card__header > svg {
+    width: 42px;
+  }
+  .final-card__header p {
+    font-size: 13px;
+  }
+}
+@media (max-width: 600px) {
+  .desktop {
+    padding: 97px 10px 54px;
+    min-height: 400px;
+  }
+  .desktop__icons {
+    width: auto;
+    left: 5px;
+    right: 5px;
+    top: 9px;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+  }
+  .desktop-icon {
+    width: 20%;
+    max-width: 85px;
+    min-height: 74px;
+    padding: 3px 1px;
+    gap: 3px;
+  }
+  .desktop-icon__label {
+    font-size: 11px;
+  }
+  .desktop-icon__art svg,
+  .desktop-icon__art img {
+    width: 33px;
+    height: 33px;
+  }
+  .desktop-icon__art {
+    height: 34px;
+  }
+  .desktop__window-stage {
+    padding: 0;
+    width: 100%;
+  }
+  .retro-window__titlebar {
+    height: 25px;
+  }
+  .retro-window__heading {
+    font-size: 12px;
+  }
+  .retro-window__heading svg {
+    width: 16px;
+    height: 16px;
+  }
+  .retro-window__body {
+    max-height: calc(100dvh - 195px);
+  }
+  .welcome {
+    min-height: 360px;
+    padding: 24px 16px;
+    gap: 14px;
+  }
+  .welcome h1 {
+    font-size: 26px;
+  }
+  .welcome p {
+    font-size: 9px;
+  }
+  .activity {
+    padding: 18px 13px;
+  }
+  .retro-window--memory:has(.activity--memory-gallery)::before {
+    display: none;
+  }
+  .viewer {
+    gap: 6px;
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+  }
+  .viewer .arrow-button {
+    width: 32px;
+    min-width: 32px;
+  }
+  .viewer-image {
+    height: 245px;
+    border-width: 4px;
+    border-radius: 40px;
+  }
+  .viewer-frame figcaption {
+    font-size: 13px;
+    padding: 5px 9px;
+  }
+  .viewer-counter {
+    font-size: 13px;
+  }
+  .memory-choose {
+    min-width: 0;
+    width: 90%;
+    font-size: 14px;
+  }
+  .development-layout {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 16px 24px;
+  }
+  .instant-photo {
+    width: 100%;
+    max-width: 255px;
+    justify-self: center;
+  }
+  .development-copy {
+    gap: 12px;
+  }
+  .instant-camera {
+    height: 130px;
+    width: 160px;
+  }
+  .activity--phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .phone-device {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 240px;
+    height: 360px;
+    flex-shrink: 0;
+  }
+  .phone-screen {
+    font-size: 13px;
+  }
+  .phone-form {
+    width: 100%;
+    min-height: 0;
+  }
+  .retro-window--phone .retro-window__body {
+    min-height: 0;
+  }
+  .phone-form__actions {
+    padding-top: 20px;
+  }
+  .cassette-stage {
+    gap: 7px;
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+  }
+  .cassette-stage .arrow-button {
+    width: 32px;
+    min-width: 32px;
+  }
+  .cassette-image {
+    height: 180px;
+  }
+  .track-title {
+    font-size: 20px;
+  }
+  .track-description {
+    font-size: 14px;
+  }
+  .audio-unavailable {
+    line-height: 1.5;
+  }
+  .capsule-layout {
+    grid-template-columns: 1fr;
+  }
+  .capsule-slot {
+    padding: 14px 0;
+  }
+  .capsule-floppy {
+    height: 180px;
+  }
+  .capsule-footer {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .capsule-footer button {
+    width: 100%;
+  }
+  .sealing {
+    padding: 25px 18px 30px;
+  }
+  .sealing h2,
+  .sealing p {
+    font-size: 16px;
+  }
+  .sealing__progress {
+    gap: 2px;
+  }
+  .final-experience {
+    padding: 10px;
+  }
+  .final-card {
+    background-image: none;
+    border: 24px solid transparent;
+    border-image: url('/images/1996/scrapbook.png') 150 fill stretch;
+    padding: 12px 0;
+  }
+  .final-card__header {
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .final-card__header > svg {
+    width: 34px;
+    height: 40px;
+  }
+  .final-card__header h2 {
+    font-size: 23px;
+  }
+  .final-card__header p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .final-card__grid {
+    grid-template-columns: 1fr;
+  }
+  .final-photo {
+    width: 190px;
+    margin: 0 auto 15px;
+  }
+  .final-note {
+    font-size: 14px;
+  }
+  .final-note svg {
+    width: 30px;
+  }
+  .final-highlight {
+    font-size: 13px;
+  }
+  .final-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .final-actions button {
+    width: 100%;
+  }
+  .crt-status {
+    font-size: 10px;
+  }
+  .taskbar__progress,
+  .taskbar__separator {
+    display: none;
+  }
+  .taskbar__tab {
+    flex: 1;
+    font-size: 11px;
+    width: auto;
+  }
+  .taskbar__spacer {
+    display: none;
+  }
+  .taskbar__clock {
+    font-size: 11px;
+    padding: 2px 6px;
+    gap: 4px;
+  }
+  .taskbar__clock svg {
+    width: 17px;
+  }
+  .start-button {
+    font-size: 15px;
+    padding: 2px 6px;
+  }
+  .start-logo {
+    width: 21px;
+    height: 16px;
+  }
+  .toast {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+@media (min-width: 480px) and (max-width: 600px) {
+  .desktop--intro {
+    height: 100dvh;
+    min-height: 0;
+    padding: 34px 16px 32px 125px;
+  }
+  .desktop--intro .desktop__icons {
+    top: 23px;
+    left: 16px;
+    right: auto;
+    width: 82px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+  .desktop--intro .desktop-icon {
+    width: 82px;
+    min-height: 56px;
+    max-width: none;
+    padding: 0;
+    gap: 2px;
+  }
+  .desktop--intro .desktop-icon__art {
+    height: 33px;
+  }
+  .desktop--intro .desktop-icon__art svg,
+  .desktop--intro .desktop-icon__art img {
+    width: 38px;
+    height: 38px;
+  }
+  .desktop--intro .desktop-icon__label {
+    font-size: 12px;
+    max-width: 78px;
+  }
+  .desktop--intro .desktop__window-stage {
+    width: 100%;
+  }
+  .desktop--intro .retro-window__body {
+    max-height: none;
+  }
+  .desktop--intro .retro-window__titlebar {
+    height: 24px;
+  }
+  .desktop--intro .welcome {
+    min-height: 242px;
+    padding: 13px 8px 12px;
+    gap: 5px;
+  }
+  .desktop--intro .welcome__computer {
+    width: 52px;
+    height: 52px;
+  }
+  .desktop--intro .welcome h1 {
+    font-size: 17px;
+    line-height: 1.4;
+    margin: 0 0 2px;
+  }
+  .desktop--intro .welcome p {
+    font-size: 9px;
+    line-height: 1.6;
+  }
+  .desktop--intro .welcome__action {
+    min-height: 31px;
+    min-width: 120px;
+    width: 120px;
+    padding: 6px 10px;
+    margin-top: 22px;
+  }
+  .desktop--intro .taskbar {
+    height: 31px;
+    padding: 2px;
+  }
+  .desktop--intro .start-button {
+    padding: 1px 6px;
+  }
+  .desktop--intro .taskbar__clock {
+    font-size: 13px;
+  }
+}
+@media (max-height: 700px) and (min-width: 601px) {
+  .desktop {
+    padding-top: 20px;
+    padding-bottom: 60px;
+  }
+  .retro-window__body {
+    max-height: calc(100dvh - 120px);
+  }
+  .desktop__icons {
+    gap: 7px;
+    top: 14px;
+  }
+}

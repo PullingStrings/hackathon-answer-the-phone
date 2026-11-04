@@ -1,0 +1,1 @@
+Original or appropriately licensed audio only. To enable playback, add files here and set the matching `audioSrc` paths in `src/data/tracks.ts` (e.g. `/audio/funk.mp3`). Without audio, playback and mute are disabled by design; choosing tracks remains fully functional.
