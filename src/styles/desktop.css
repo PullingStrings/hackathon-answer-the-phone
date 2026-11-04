@@ -744,91 +744,55 @@
   .track-controls { flex-wrap: nowrap; gap: 4px; }
   .track-time { font-size: 10px; }
 }
-/* 6. The three collected items and a labelled floppy disk. */
-.activity--capsule {
-  padding: 25px;
-}
+
+/* Panel 06: compact capsule collection, period-appropriate floppy and divider lines. */
+.desktop__window-stage--capsule { width: min(650px, 100%); }
+.activity--capsule { padding: 12px 17px 14px; }
 .capsule-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr);
+  gap: 15px;
   align-items: center;
 }
 .capsule-slots {
-  background: #d9d9d9;
-  padding: 4px 14px;
+  background: #dbdbe0;
+  padding: 3px 12px;
   border-radius: 8px;
+  box-shadow: inset 1px 1px #fafafa;
 }
 .capsule-slot {
-  width: 100%;
-  border: 0;
-  border-bottom: 1px dashed #999;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  gap: 17px;
-  padding: 19px 0;
-  text-align: left;
-  color: #111;
+  display: flex; align-items: center; width: 100%;
+  gap: 11px; padding: 10px 0;
+  border: 0; border-bottom: 1px dashed #9d9da8;
+  background: transparent; text-align: left; color: #111;
 }
-.capsule-slot:last-child {
-  border-bottom: 0;
-}
-.capsule-slot__image {
-  width: 53px;
-  flex-shrink: 0;
-}
+.capsule-slot:last-child { border-bottom: 0; }
+.capsule-slot__image { width: 51px; flex: 0 0 51px; }
+.capsule-slot__image svg { width: 40px; height: 40px; image-rendering: pixelated; }
 .capsule-thumbnail {
-  display: block;
-  width: 51px;
-  height: 63px;
-  border: 5px solid #fff;
-  border-bottom-width: 12px;
-  object-fit: cover;
-  box-shadow: 1px 2px 1px #888;
+  display: block; width: 44px; height: 54px;
+  border: 4px solid #fff; border-bottom-width: 10px;
+  object-fit: cover; box-shadow: 1px 2px 1px #888;
   transform: rotate(-9deg);
 }
 .capsule-slot__content {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 0;
-  overflow-wrap: anywhere;
-  font-size: 15px;
-  line-height: 1.3;
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 0; overflow-wrap: anywhere;
+  font-size: 13px; line-height: 1.22;
 }
-.capsule-slot__content strong {
-  font-size: 19px;
+.capsule-slot__content strong { font-size: 16px; }
+.collection-check { color: #13812c; font-size: 21px; margin-left: 4px; vertical-align: middle; }
+.collection-empty { color: #555; }
+.capsule-floppy { display: block; width: 100%; height: 215px; object-fit: contain; }
+.capsule-footer { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 10px; }
+.capsule-footer > span { font-size: 11px; color: #515151; margin-right: auto; }
+.capsule-footer button { min-width: 194px; min-height: 34px; padding: 6px 12px; font-weight: bold; font-size: 14px; }
+@media (max-width: 600px) {
+  .capsule-layout { grid-template-columns: 1fr; gap: 5px; }
+  .capsule-floppy { height: 160px; }
+  .capsule-footer { flex-direction: column; align-items: stretch; }
+  .capsule-footer button { width: 100%; }
 }
-.collection-check {
-  color: #13812c;
-  font-size: 27px;
-  vertical-align: middle;
-  margin-left: 4px;
-}
-.collection-empty {
-  color: #555;
-}
-.capsule-floppy {
-  width: 100%;
-  height: 290px;
-  object-fit: contain;
-}
-.capsule-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  margin-top: 25px;
-}
-.capsule-footer > span {
-  font-size: 13px;
-}
-.capsule-footer button {
-  min-width: 220px;
-  font-weight: bold;
-}
-
 /* 7. A short, classic segmented Windows progress dialog. */
 .sealing {
   padding: 35px 50px 45px;

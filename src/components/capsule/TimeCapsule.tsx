@@ -59,8 +59,8 @@ export default function TimeCapsule({ capsule, completed, open, onSeal }: Props)
         />
       </div>
       <div className="capsule-footer">
-        <span role="status">
-          {completed} / 3 collected{completed === 3 ? '. Ready to seal!' : '.'}
+        <span role="status" aria-label={`${completed} of 3 memories collected`}>
+          {completed < 3 ? `${completed}/3 collected` : '3/3 ready'}
         </span>
         <button type="button" disabled={completed !== 3} className="retro-button" onClick={onSeal}>
           Seal Until 2026...
