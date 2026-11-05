@@ -17,6 +17,7 @@ export const tracks: Track[] = [
     description: 'Big beats, rave nights and Eurodance energy.',
     side: 'VOL. 01',
     color: '#ef875c',
+    audioSrc: '/audio/ShowMeLove.mp3',
   },
   {
     id: 'synth',
@@ -24,6 +25,7 @@ export const tracks: Track[] = [
     description: 'Loud guitars, teenage angst and indie anthems.',
     side: 'VOL. 02',
     color: '#a6badd',
+    audioSrc: '/audio/FlagpoleSita.mp3',
   },
   {
     id: 'hiphop',
@@ -31,6 +33,7 @@ export const tracks: Track[] = [
     description: 'Iconic rhymes, smooth harmonies and soulful grooves.',
     side: 'VOL. 03',
     color: '#db9de0',
+    audioSrc: '/audio/Hyponotize.mp3',
   },
 ];
 
