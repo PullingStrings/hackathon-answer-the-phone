@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { downloadTimeCapsule } from '../../utils/downloadTimeCapsule';
 import { getMemory } from '../../data/memories';
 import { getTrack } from '../../data/tracks';
 import type { CapsuleState } from '../../types/capsule';
@@ -5,6 +7,20 @@ import PixelIcon from '../ui/PixelIcon';
 
 type Props = { capsule: CapsuleState; onRestart: () => void };
 export default function FinalCapsuleCard({ capsule, onRestart }: Props) {
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  async function saveToFloppy() {
+    if (isSaving) return;
+    setIsSaving(true);
+    setSaveError(null);
+    try {
+      await downloadTimeCapsule(capsule);
+    } catch (error) {
+      setSaveError(error instanceof Error ? error.message : 'Could not save your capsule.');
+    } finally {
+      setIsSaving(false);
+    }
+  }
   const memory = getMemory(capsule.memoryId);
   const track = getTrack(capsule.trackId);
   return (
@@ -63,11 +79,16 @@ export default function FinalCapsuleCard({ capsule, onRestart }: Props) {
           <PixelIcon name="disk" size={19} /> A:\MEMORIES — SAVE COMPLETE.
         </span>
         <div className="final-actions__buttons">
+          <button type="button" className="retro-button final-actions__download" onClick={saveToFloppy} disabled={isSaving}>
+            <PixelIcon name="disk" size={20} />
+            {isSaving ? 'Saving...' : 'Save to Floppy'}
+          </button>
           <button type="button" className="retro-button" onClick={onRestart}>
             Start Again
           </button>
         </div>
       </div>
+      {saveError && <p className="final-save-error" role="alert">{saveError}</p>}
     </div>
   );
 }
