@@ -1535,3 +1535,12 @@
   .final-actions__buttons { flex-wrap:wrap; width:100%; }
   .final-actions__buttons button { flex:1; }
 }
+
+/* Keep the downloadable keepsake action consistent with Win95 controls. */
+.final-actions__download { display:inline-flex; align-items:center; justify-content:center; gap:6px; white-space:nowrap; }
+.final-actions__download img,.final-actions__download svg { width:20px; height:20px; image-rendering:pixelated; }
+.final-actions__download:disabled { opacity:.75; }
+.final-save-error { margin:8px 0 0; padding:8px 10px; color:#111; background:#fff1cf; border:1px solid #8b5a46; font-size:12px; }
+@media (max-width:600px) {
+  .final-actions__download { min-height:36px; }
+}
